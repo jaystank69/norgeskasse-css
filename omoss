@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Om oss - Norgeskassen</title>
+    <link rel="stylesheet" href="https://jaystank69.github.io/norgeskasse-css/style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Norgeskassen</h1>
+        <p>Alt du trenger når strømmen går</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Hjem</a>
+        <a href="produkter.html">Produkter</a>
+        <a href="omoss.html">Om oss</a>
+        <a href="kontakt.html">Kontakt</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Om Norgeskassen</h2>
+            <p>Norgeskassen ble etablert med ett formål: Å sørge for trygghet og beredskap i norske hjem. Våre nødkasser
+                inneholder alt du trenger av grunnleggende forsyninger dersom strømmen går eller en nødsituasjon oppstår.</p>
+
+            <p>Vi er stolte av å levere kvalitetssikrede produkter som møter kravene fra Direktoratet for
+                samfunnssikkerhet og beredskap (DSB).</p>
+
+            <p>Vårt mål er å gjøre beredskap enkelt, tilgjengelig og forståelig for alle.</p>
+        </section>
+
+        <section>
+            <h2>Hvorfor velge oss?</h2>
+            <ul>
+                <li>Garantert kvalitet og holdbarhet</li>
+                <li>Enkle og tydelige produktvalg</li>
+                <li>Hurtig levering over hele landet</li>
+                <li>Norsk selskap med lokal kundestøtte</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>© 2025 Norgeskassen AS</p>
+    </footer>
+
+</body>
+
+</html>
