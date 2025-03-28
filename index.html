@@ -3,39 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produktlansering</title>
+    <title>Norgeskasse - Beredskap etter DSBs anbefalinger</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="scroll-container">
-        <!-- Seksjon 1: Hovedspørsmål -->
-        <section class="fullscreen-section">
+        <!-- Hero-seksjon -->
+        <section class="fullscreen-section hero-section">
             <h1>Er du i beredskap?</h1>
+            <p class="subtitle">Norgeskasse – Ferdigpakket trygghet etter DSBs retningslinjer</p>
+            <div class="scroll-prompt"></div>
         </section>
 
-        <!-- Seksjon 2: Produktbildet -->
-        <section class="fullscreen-section image-section">
-            <div class="image-overlay">
-                <h2>Vårt løsning</h2>
-                <p>En revolusjonerende teknologi for krisesituasjoner</p>
+        <!-- Standardkasse -->
+        <section class="fullscreen-section product-section" style="background-image: url('standard-bilde.jpg')">
+            <div class="product-overlay">
+                <h2>Standard</h2>
+                <p>Alt du trenger for 3 dager etter DSBs minimumskrav</p>
+                <ul class="product-features">
+                    <li>✔ Vannrensetabletter</li>
+                    <li>✔ Nødlys</li>
+                    <li>✔ Førstehjelpssett</li>
+                    <li>✔ 9.000 kcal tørrmat</li>
+                </ul>
+                <p class="price">1.299 kr</p>
             </div>
         </section>
 
-        <!-- Seksjon 3: Pris -->
-        <section class="fullscreen-section">
-            <h2>Pris</h2>
-            <p class="price">4 999 kr</p>
-            <p class="note">Inkluderer 24/7 støtte</p>
+        <!-- Familie -->
+        <section class="fullscreen-section product-section" style="background-image: url('familie-bilde.jpg')">
+            <div class="product-overlay">
+                <h2>Familie</h2>
+                <p>For husholdninger med barn, inkluderer ekstra hygieneartikler</p>
+                <ul class="product-features">
+                    <li>✔ Alt i Standard +</li>
+                    <li>✔ Ekstra vannfilter</li>
+                    <li>✔ Spesialmat for barn</li>
+                    <li>✔ Hygienepakke</li>
+                </ul>
+                <p class="price">2.499 kr</p>
+            </div>
         </section>
 
-        <!-- Seksjon 4: Kundevurderinger -->
-        <section class="fullscreen-section">
-            <h2>Hva våre kunder sier</h2>
-            <blockquote>
-                "Reddet livet mitt under siste krise"
-                <cite>- Ola Nordmann</cite>
-            </blockquote>
+        <!-- Premium -->
+        <section class="fullscreen-section product-section" style="background-image: url('premium-bilde.jpg')">
+            <div class="product-overlay">
+                <h2>Premium</h2>
+                <p>Komplett løsning for 2+ uker med selvberging</p>
+                <ul class="product-features">
+                    <li>✔ Alt i Familie +</li>
+                    <li>✔ Solcadeladere</li>
+                    <li>✔ Avansert medisinsk utstyr</li>
+                    <li>✔ Kommunikasjonsutstyr</li>
+                </ul>
+                <p class="price">4.999 kr</p>
+            </div>
+        </section>
+
+        <!-- Om oss -->
+        <section class="fullscreen-section about-section">
+            <h2>Hvem står bak?</h2>
+            <p>Vi er logistikkarbeidere, helsepersonell og ingeniører som vil gjøre det enkelt å følge myndighetenes råd.</p>
+            <div class="team-icons">
+                <div class="icon">🚚</div>
+                <div class="icon">🏥</div>
+                <div class="icon">⚙️</div>
+            </div>
+            <p class="highlight">Fri frakt i hele Norge gjennom Helthjem</p>
         </section>
     </div>
 
