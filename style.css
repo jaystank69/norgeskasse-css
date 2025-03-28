@@ -1,81 +1,103 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+/* Importerer moderne font fra Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
-:root {
-  --bg: #f9fafb;
-  --text: #1f2937;
-  --primary: #0f766e;
-  --accent: #f97316;
-  --light: #ffffff;
-  --radius: 10px;
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
+/* Generelle stiler for hele nettsiden */
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
+/* Header-styling */
 header {
-  background: var(--primary);
-  color: var(--light);
-  padding: 3rem 1rem;
-  text-align: center;
+    background-color: #004B87;
+    color: #ffffff;
+    padding: 30px;
+    text-align: center;
 }
 
+header h1 {
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+    animation: fadeIn 1.5s ease-in;
+}
+
+header p {
+    font-size: 1.2rem;
+    animation: fadeIn 2s ease-in;
+}
+
+/* Navigasjon (meny) */
 nav {
-  background: #e0f2fe;
-  padding: 1rem;
-  text-align: center;
+    background-color: #003865;
+    text-align: center;
+    padding: 10px;
 }
 
 nav a {
-  margin: 0 1.5rem;
-  text-decoration: none;
-  font-weight: 600;
-  color: var(--text);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 15px;
+    display: inline-block;
+    transition: background-color 0.3s ease-in-out;
 }
 
 nav a:hover {
-  color: var(--primary);
+    background-color: #006bb6;
 }
 
-.hero {
-  height: 300px;
-  background: url('https://images.unsplash.com/photo-1600195077072-57f350f201fc?fit=crop&w=1400&q=80') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  color: white;
-  text-align: center;
+/* Hovedinnholdet */
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
 }
 
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+section.produkt {
+    background-color: #ffffff;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
 }
 
-.hero h2 {
-  position: relative;
-  z-index: 1;
-  font-size: 2rem;
+section.produkt:hover {
+    transform: translateY(-5px);
 }
 
-section {
-  max-width: 1000px;
-  margin: auto;
-  padding: 4rem 1.5rem;
+h2 {
+    color: #004B87;
 }
 
 footer {
-  text-align: center;
-  background: #1e293b;
-  color: white;
-  padding: 2rem;
-  margin-top: 4rem;
+    text-align: center;
+    padding: 20px;
+    background-color: #003865;
+    color: #ffffff;
+}
+
+/* Mobiltilpassing */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav a {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    section.produkt {
+        padding: 15px;
+    }
+}
+
+/* Animasjoner */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
