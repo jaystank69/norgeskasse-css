@@ -9,93 +9,171 @@
         :root {
             --black: #000000;
             --white: #ffffff;
-            --primary: #0066cc;
-            --text-light: rgba(255,255,255,0.9);
+            --primary: #0066cc;  /* DSB-blå */
+            --accent: #e31937;   /* Rød for advarsler */
+            --gray: #1a1a1a;     /* Mørk grå for bakgrunner */
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
+            padding: 0;
             background-color: var(--black);
             color: var(--white);
             line-height: 1.6;
-            scroll-behavior: smooth;
+        }
+
+        /* Seksjonsstiler */
+        section {
+            height: 100vh;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+            padding: 0 20px;
         }
 
         /* Hero-seksjon */
         .hero {
-            height: 100vh;
-            background-image: url('bilder/hero.jpg');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), 
+                        url('bilder/hero.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+        }
+
+        /* Advarsels-seksjon */
+        .warning {
+            background-color: var(--black);
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            position: relative;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
+        .warning-content {
             max-width: 800px;
-            padding: 0 20px;
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         /* Produktseksjon */
-        .product-section {
+        .products {
+            background-color: var(--gray);
+            padding: 80px 20px;
+            height: auto;
             min-height: 100vh;
-            padding: 4rem 2rem;
-            background-color: var(--black);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 30px;
             max-width: 1200px;
-            margin: 3rem auto 0;
+            margin: 0 auto;
         }
 
         .product-card {
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 10px;
-            padding: 2rem;
-            transition: all 0.3s ease;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        .product-card:hover {
-            transform: translateY(-10px);
-        }
+        .product-card:nth-child(1) { animation: fadeInUp 0.8s ease-out 0.3s forwards; }
+        .product-card:nth-child(2) { animation: fadeInUp 0.8s ease-out 0.5s forwards; }
+        .product-card:nth-child(3) { animation: fadeInUp 0.8s ease-out 0.7s forwards; }
 
         /* Bestillingsskjema */
         .order-form {
-            min-height: 100vh;
-            padding: 4rem 2rem;
             background-color: var(--black);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Animasjoner */
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Typografi */
+        h1, h2, h3 {
+            font-weight: 700;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 6vw, 3rem);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .warning h2 {
+            color: var(--accent);
+            font-size: clamp(2.2rem, 7vw, 3.5rem);
+            margin-bottom: 2rem;
+        }
+
+        /* Knapper */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: #0055aa;
+            transform: translateY(-3px);
         }
 
         /* Scroll-prompt */
         .scroll-prompt {
             position: absolute;
-            bottom: 30px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             animation: bounce 2s infinite;
@@ -106,6 +184,17 @@
             40% { transform: translateY(-20px) translateX(-50%); }
             60% { transform: translateY(-10px) translateX(-50%); }
         }
+
+        /* Mobiltilpasning */
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            section {
+                padding: 0 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -113,54 +202,149 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Er du i beredskap?</h1>
-            <p>Norgeskasse - Ferdigpakket trygghet etter DSBs retningslinjer</p>
+            <p style="font-size: clamp(1.2rem, 3vw, 1.8rem); max-width: 700px; margin: 0 auto 2rem;">
+                Norgeskasse - Ferdigpakket trygghet etter DSBs retningslinjer
+            </p>
             <div class="scroll-prompt">↓</div>
         </div>
     </section>
 
+    <!-- Advarsels-seksjon -->
+    <section class="warning">
+        <div class="warning-content">
+            <h2>ER DU VIRKELIG FORBEREDT?</h2>
+            <p style="font-size: clamp(1.2rem, 3vw, 1.8rem); max-width: 700px; margin: 0 auto;">
+                I en krise er det de forberedte som best takler utfordringene.<br>
+                Hvor står du?
+            </p>
+        </div>
+    </section>
+
     <!-- Produktoversikt -->
-    <section class="product-section" id="produkter">
-        <h2>Våre beredskapskasser</h2>
+    <section class="products">
+        <h2>VÅRE BEREDSKAPSKASSER</h2>
+        
         <div class="product-grid">
+            <!-- Standardkasse -->
             <div class="product-card">
                 <h3>Standardkasse</h3>
                 <p>For 1 person i 3 dager</p>
-                <ul>
-                    <li>Vannrensetabletter</li>
-                    <li>9.000 kcal tørrmat</li>
-                    <li>Førstehjelpssett</li>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+                        Vannrensetabletter (400L)
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+                        9.000 kcal tørrmat
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+                        Komplett førstehjelpssett
+                    </li>
                 </ul>
-                <div style="font-size: 2rem; margin: 1.5rem 0; color: var(--primary);">1.299 kr</div>
-                <button onclick="document.getElementById('bestilling').scrollIntoView({behavior: 'smooth'})">Bestill nå</button>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--primary); margin: 2rem 0; text-align: center;">
+                    1.299 kr
+                </div>
+                <a href="#bestilling" class="btn">Bestill nå</a>
             </div>
             
-            <!-- Legg til Familie- og Premium-kasser her med samme struktur -->
+            <!-- Familiekasse -->
+            <div class="product-card">
+                <h3>Familiekasse</h3>
+                <p>For 2 voksne + 2 barn i 5 dager</p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+                        Alt i Standardkassen +
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+                        Barnemat (gluten/laktosefri)
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+                        Hygienepakke med 50 våtservietter
+                    </li>
+                </ul>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--primary); margin: 2rem 0; text-align: center;">
+                    2.499 kr
+                </div>
+                <a href="#bestilling" class="btn">Bestill nå</a>
+            </div>
+            
+            <!-- Premiumkasse -->
+            <div class="product-card">
+                <h3>Premiumkasse</h3>
+                <p>For 4 personer i 2+ uker</p>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+                        Alt i Familiekassen +
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+                        Solcadelader + batteri
+                    </li>
+                    <li style="margin-bottom: 0.8rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0; color: var(--primary);">•</span>
+                        Nødradio med VHF
+                    </li>
+                </ul>
+                <div style="font-size: 2rem; font-weight: 700; color: var(--primary); margin: 2rem 0; text-align: center;">
+                    4.999 kr
+                </div>
+                <a href="#bestilling" class="btn">Bestill nå</a>
+            </div>
         </div>
     </section>
 
     <!-- Bestillingsskjema -->
     <section class="order-form" id="bestilling">
-        <h2>Bestill din kasse</h2>
-        <form id="bestillingsform" action="https://formspree.io/f/mvgkbawp" method="POST">
-            <input type="hidden" name="_next" value="takk.html">
-            <div style="margin-bottom: 1.5rem;">
-                <label style="display: block; margin-bottom: 0.5rem;">Fullt navn:</label>
-                <input type="text" name="name" required style="width: 100%; padding: 0.75rem; background: #111; border: 1px solid #333; color: white;">
-            </div>
-            
-            <!-- Legg til flere felter her -->
-            
-            <button type="submit" style="background: var(--primary); color: white; border: none; padding: 1rem; width: 100%; cursor: pointer;">Send bestilling</button>
-        </form>
+        <div style="max-width: 600px; margin: 0 auto;">
+            <h2>BESTILL DIN KASSE</h2>
+            <form id="bestillingsform" action="https://formspree.io/f/mvgkbawp" method="POST" style="margin-top: 2rem;">
+                <input type="hidden" name="_next" value="takk.html">
+                <input type="hidden" name="_subject" value="Ny Norgeskasse-bestilling">
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Fullt navn:</label>
+                    <input type="text" name="name" required style="width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: white; border-radius: 4px;">
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">E-post:</label>
+                    <input type="email" name="email" required style="width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: white; border-radius: 4px;">
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; font-weight: 500;">Velg produkt:</label>
+                    <select name="product" required style="width: 100%; padding: 12px; background: #111; border: 1px solid #333; color: white; border-radius: 4px;">
+                        <option value="">Velg din kasse...</option>
+                        <option value="Standardkasse - 1.299 kr">Standardkasse (1.299 kr)</option>
+                        <option value="Familiekasse - 2.499 kr">Familiekasse (2.499 kr)</option>
+                        <option value="Premiumkasse - 4.999 kr">Premiumkasse (4.999 kr)</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%;">Fullfør bestilling</button>
+            </form>
+        </div>
     </section>
 
     <script>
-        // Enkel scroll-funksjon
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({
-                behavior: 'smooth'
+        // Lazy-load animasjoner
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
             });
-        }
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
