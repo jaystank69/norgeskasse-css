@@ -1,26 +1,393 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="no" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Norgeskassen</title>
-  <!-- CSS -->
+  <title>Norgeskassen | Beredskap for alle norske hjem</title>
   <link rel="stylesheet" href="https://jaystank69.github.io/norgeskasse-css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #005F73;
+      --secondary: #0A9396;
+      --accent: #EE9B00;
+      --dark: #001219;
+      --light: #E9D8A6;
+      --danger: #BB3E03;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop') center/cover;
+      opacity: 0.2;
+      z-index: 0;
+    }
+    
+    header > * {
+      position: relative;
+      z-index: 1;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .tagline {
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
+      font-weight: 400;
+    }
+    
+    nav {
+      background-color: var(--dark);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+      position: relative;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .cta-button {
+      background-color: var(--accent);
+      color: var(--dark);
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(238, 155, 0, 0.4);
+    }
+    
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    
+    .hero {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      background: linear-gradient(rgba(0, 95, 115, 0.7), rgba(10, 147, 150, 0.7)), url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&auto=format&fit=crop') center/cover;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      margin-bottom: 3rem;
+    }
+    
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--dark);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      margin-left: 1rem;
+    }
+    
+    .section {
+      margin-bottom: 4rem;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .section-header h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+    }
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .card-img {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+    }
+    
+    .card-title {
+      font-size: 1.3rem;
+      margin-top: 0;
+      color: var(--primary);
+    }
+    
+    .testimonial {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .testimonial::before {
+      content: '\201C';
+      font-family: Georgia, serif;
+      font-size: 5rem;
+      color: rgba(0, 95, 115, 0.1);
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+    
+    .testimonial blockquote {
+      font-style: italic;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+    
+    .testimonial-author {
+      font-weight: 700;
+      color: var(--primary);
+      text-align: right;
+    }
+    
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 0 1rem;
+      text-align: left;
+    }
+    
+    .footer-column h3 {
+      color: var(--accent);
+      margin-top: 0;
+    }
+    
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    
+    .social-links a:hover {
+      color: var(--accent);
+    }
+    
+    .copyright {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .tagline {
+        font-size: 1.2rem;
+      }
+      
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <!-- HEADER -->
   <header>
     <h1>Norgeskassen</h1>
-    <p>Alt du trenger når strømmen går</p>
+    <p class="tagline">Trygghet når strømmen går</p>
   </header>
 
   <!-- NAVIGASJON -->
   <nav>
-    <a href="index.html">Hjem</a>
-    <a href="produkter.html">Produkter</a>
-    <a href="omoss.html">Om oss</a>
-    <a href="kontakt.html">Kontakt</a>
+    <div class="nav-container">
+      <div class="logo">
+        <span style="font-weight: 700; color: var(--accent);">NORGESKASSEN</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html"><i class="fas fa-home"></i> Hjem</a>
+        <a href="produkter.html"><i class="fas fa-box-open"></i> Produkter</a>
+        <a href="omoss.html"><i class="fas fa-info-circle"></i> Om oss</a>
+        <a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a>
+        <a href="produkter.html" class="cta-button"><i class="fas fa-shopping-cart"></i> Bestill nå</a>
+      </div>
+    </div>
   </nav>
 
   <!-- MAIN INNHOLD -->
@@ -28,60 +395,172 @@
     <!-- HERO-SEKSJON -->
     <section class="hero">
       <h2>Beredskap gjort enkelt</h2>
-      <img src="bilder/hero-bilde.jpg" alt="Beredskap gjort enkelt">
+      <p>Våre nødkasser inneholder alt du trenger for å takle uventede situasjoner med selvsikkerhet</p>
+      <div>
+        <a href="produkter.html" class="btn">Se våre produkter</a>
+        <a href="omoss.html" class="btn btn-outline">Lær mer</a>
+      </div>
     </section>
 
     <!-- OM OSS -->
-    <section id="om-oss">
-      <h2>Om Norgeskassen</h2>
-      <img src="bilder/om-oss.jpg" alt="Om oss">
-      <p>Norgeskassen ble etablert med ett formål: Å sørge for trygghet og beredskap i norske hjem. Våre nødkasser inneholder alt du trenger av grunnleggende forsyninger dersom strømmen går eller en nødsituasjon oppstår.</p>
-
-      <p>Vi er stolte av å levere kvalitetssikrede produkter som møter kravene fra Direktoratet for samfunnssikkerhet og beredskap (DSB).</p>
-
-      <p>Vårt mål er å gjøre beredskap enkelt, tilgjengelig og forståelig for alle.</p>
-      <a href="omoss.html">Les mer om oss</a>
+    <section id="om-oss" class="section">
+      <div class="section-header">
+        <h2>Om Norgeskassen</h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop" alt="Om oss" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Vår historie</h3>
+            <p>Norgeskassen ble etablert med ett formål: Å sørge for trygghet og beredskap i norske hjem. Våre nødkasser inneholder alt du trenger av grunnleggende forsyninger dersom strømmen går eller en nødsituasjon oppstår.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop" alt="Kvalitet" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Vår kvalitet</h3>
+            <p>Vi er stolte av å levere kvalitetssikrede produkter som møter kravene fra Direktoratet for samfunnssikkerhet og beredskap (DSB). Alle våre produkter gjennomgår strenge tester.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop" alt="Mål" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Vårt mål</h3>
+            <p>Vårt mål er å gjøre beredskap enkelt, tilgjengelig og forståelig for alle. Vi tror at trygghet ikke bør være en luksus, men noe alle har rett til.</p>
+            <a href="omoss.html" class="btn" style="margin-top: 1rem;">Les mer</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- PRODUKTINFO -->
-    <section id="produktinfo">
-      <h2>Produktinformasjon</h2>
-      <img src="bilder/produkter.jpg" alt="Produkter">
-      <ul>
-        <li><strong>Norgeskassen Standard:</strong> Grunnleggende forsyninger for enkeltpersoner og små familier.</li>
-        <li><strong>Norgeskassen Familie:</strong> Ekstra forsyninger tilpasset familier opptil fire personer.</li>
-        <li><strong>Norgeskassen Premium:</strong> Komplett pakke for krevende situasjoner og lengre varighet.</li>
-      </ul>
+    <section id="produktinfo" class="section">
+      <div class="section-header">
+        <h2>Våre produkter</h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1581578017566-0625fa0e48bf?ixlib=rb-4.0.3&auto=format&fit=crop" alt="Standard" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Standard</h3>
+            <ul>
+              <li>Grunnleggende forsyninger</li>
+              <li>For 1-2 personer</li>
+              <li>3 dagers forbruk</li>
+              <li>Førstehjelpsutstyr</li>
+            </ul>
+            <p style="font-weight: 600; font-size: 1.2rem; margin: 1rem 0;">kr 899</p>
+            <a href="produkter.html#standard" class="btn">Detaljer</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop" alt="Familie" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Familie</h3>
+            <ul>
+              <li>Utvidet forsyninger</li>
+              <li>For opptil 4 personer</li>
+              <li>5 dagers forbruk</li>
+              <li>Komplett førstehjelp</li>
+            </ul>
+            <p style="font-weight: 600; font-size: 1.2rem; margin: 1rem 0;">kr 1,499</p>
+            <a href="produkter.html#familie" class="btn">Detaljer</a>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1581578017566-0625fa0e48bf?ixlib=rb-4.0.3&auto=format&fit=crop" alt="Premium" class="card-img">
+          <div class="card-body">
+            <h3 class="card-title">Premium</h3>
+            <ul>
+              <li>Komplette forsyninger</li>
+              <li>For opptil 6 personer</li>
+              <li>7+ dagers forbruk</li>
+              <li>Avansert førstehjelp</li>
+            </ul>
+            <p style="font-weight: 600; font-size: 1.2rem; margin: 1rem 0;">kr 2,299</p>
+            <a href="produkter.html#premium" class="btn">Detaljer</a>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- KUNDEANMELDELSER -->
-    <section id="kundeanmeldelser">
-      <h2>Kundeanmeldelser</h2>
-      <img src="bilder/kundeanmeldelser.jpg" alt="Kundeanmeldelser">
-      <blockquote>
-        “Fantastisk produkt som gir trygghet i hverdagen. Anbefales på det sterkeste!”<br>
-        <strong>— Kari Nordmann</strong>
-      </blockquote>
+    <section id="kundeanmeldelser" class="section">
+      <div class="section-header">
+        <h2>Hva våre kunder sier</h2>
+      </div>
+      <div class="testimonial">
+        <blockquote>
+          "Fantastisk produkt som gir trygghet i hverdagen. Da strømmen gikk i hele nabolaget i tre dager i fjor, var vi de eneste som hadde alt vi trengte. Anbefales på det sterkeste!"
+        </blockquote>
+        <p class="testimonial-author">— Kari Nordmann, Oslo</p>
+      </div>
     </section>
 
     <!-- NYTTIGE LENKER -->
-    <section id="nyttige-lenker">
-      <h2>Nyttige lenker</h2>
-      <ul>
-        <li><a href="faq.html">Ofte stilte spørsmål (FAQ)</a></li>
-        <li><a href="kontakt.html">Kontakt oss</a></li>
-        <li><a href="levering.html">Leveringsbetingelser</a></li>
-        <li><a href="vilkar.html">Vilkår og betingelser</a></li>
-        <li><a href="personvern.html">Personvern</a></li>
-      </ul>
+    <section id="nyttige-lenker" class="section">
+      <div class="section-header">
+        <h2>Ressurser</h2>
+      </div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Beredskapsveiledning</h3>
+            <ul class="footer-links">
+              <li><a href="faq.html"><i class="fas fa-question-circle"></i> Ofte stilte spørsmål</a></li>
+              <li><a href="https://dsb.no"><i class="fas fa-shield-alt"></i> DSBs råd</a></li>
+              <li><a href="beredskapsplan.html"><i class="fas fa-clipboard-list"></i> Lag din egen plan</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Bedriftsløsninger</h3>
+            <ul class="footer-links">
+              <li><a href="bedrift.html"><i class="fas fa-building"></i> For bedrifter</a></li>
+              <li><a href="skole.html"><i class="fas fa-school"></i> For skoler</a></li>
+              <li><a href="kontor.html"><i class="fas fa-briefcase"></i> For kontorer</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
-
   </main>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 Norgeskassen AS | Org.nr: 123 456 789 MVA</p>
-    <p>E-post: post@norgeskasse.no | Telefon: 12 34 56 78</p>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Norgeskassen</h3>
+        <p>Din pålitelige partner for beredskap og trygghet i hverdagen.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h3>Kundeservice</h3>
+        <ul class="footer-links">
+          <li><a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt oss</a></li>
+          <li><a href="leveringsbetingelser.html"><i class="fas fa-truck"></i> Levering</a></li>
+          <li><a href="retur.html"><i class="fas fa-undo"></i> Retur og reklamasjon</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h3>Juridisk</h3>
+        <ul class="footer-links">
+          <li><a href="vilkar.html"><i class="fas fa-file-contract"></i> Vilkår</a></li>
+          <li><a href="personvern.html"><i class="fas fa-lock"></i> Personvern</a></li>
+          <li><a href="cookies.html"><i class="fas fa-cookie-bite"></i> Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 Norgeskassen AS | Org.nr: 123 456 789 MVA</p>
+      <p><i class="fas fa-phone"></i> 12 34 56 78 | <i class="fas fa-envelope"></i> post@norgeskasse.no</p>
+    </div>
   </footer>
 
 </body>
