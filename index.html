@@ -5,36 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Norgeskasse - Beredskap etter DSB</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --primary: #0066cc;
+            --text-light: rgba(255,255,255,0.9);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Hero-seksjon */
+        .hero {
+            height: 100vh;
+            background-image: url('bilder/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Produktseksjon */
+        .product-section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            background-color: var(--black);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 3rem auto 0;
+        }
+
+        .product-card {
+            background: rgba(0,0,0,0.7);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Bestillingsskjema */
+        .order-form {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            background-color: var(--black);
+        }
+
+        /* Scroll-prompt */
+        .scroll-prompt {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+    </style>
 </head>
 <body>
-    <div class="scroll-container">
-        <!-- Hero-seksjon -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Er du i beredskap?</h1>
-                <p>Norgeskasse - Ferdigpakket trygghet etter DSBs retningslinjer</p>
-                <div class="scroll-prompt">↓</div>
+    <!-- Hero-seksjon -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Er du i beredskap?</h1>
+            <p>Norgeskasse - Ferdigpakket trygghet etter DSBs retningslinjer</p>
+            <div class="scroll-prompt">↓</div>
+        </div>
+    </section>
+
+    <!-- Produktoversikt -->
+    <section class="product-section" id="produkter">
+        <h2>Våre beredskapskasser</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <h3>Standardkasse</h3>
+                <p>For 1 person i 3 dager</p>
+                <ul>
+                    <li>Vannrensetabletter</li>
+                    <li>9.000 kcal tørrmat</li>
+                    <li>Førstehjelpssett</li>
+                </ul>
+                <div style="font-size: 2rem; margin: 1.5rem 0; color: var(--primary);">1.299 kr</div>
+                <button onclick="document.getElementById('bestilling').scrollIntoView({behavior: 'smooth'})">Bestill nå</button>
             </div>
-        </section>
+            
+            <!-- Legg til Familie- og Premium-kasser her med samme struktur -->
+        </div>
+    </section>
 
-        <!-- Produktoversikt -->
-        <section class="product-section">
-            <h2>Våre beredskapskasser</h2>
-            <div class="product-grid">
-                <!-- Produktkort blir satt inn via JavaScript -->
+    <!-- Bestillingsskjema -->
+    <section class="order-form" id="bestilling">
+        <h2>Bestill din kasse</h2>
+        <form id="bestillingsform" action="https://formspree.io/f/mvgkbawp" method="POST">
+            <input type="hidden" name="_next" value="takk.html">
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; margin-bottom: 0.5rem;">Fullt navn:</label>
+                <input type="text" name="name" required style="width: 100%; padding: 0.75rem; background: #111; border: 1px solid #333; color: white;">
             </div>
-        </section>
+            
+            <!-- Legg til flere felter her -->
+            
+            <button type="submit" style="background: var(--primary); color: white; border: none; padding: 1rem; width: 100%; cursor: pointer;">Send bestilling</button>
+        </form>
+    </section>
 
-        <!-- Bestillingsskjema -->
-        <section class="order-form" id="bestillingsskjema">
-            <h2>Bestill din kasse</h2>
-            <form id="bestillingsform">
-                <!-- Skjemafelter blir satt inn via JavaScript -->
-            </form>
-        </section>
-    </div>
-
-    <script src="script.js"></script>
+    <script>
+        // Enkel scroll-funksjon
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </body>
 </html>
