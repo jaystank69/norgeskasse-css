@@ -1,38 +1,60 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Scroll-animasjoner
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                
-                // Spesialeffekt for DSB-merket
-                if (entry.target.classList.contains('hero-section')) {
-                    const badge = document.querySelector('.dsb-badge');
-                    badge.style.animation = 'none';
-                    void badge.offsetWidth; // Trigger reflow
-                    badge.style.animation = 'pulse 2s infinite';
-                }
-            }
-        });
-    }, { threshold: 0.25 });
+// Produktdata
+const products = [
+    {
+        name: "Standardkasse",
+        price: "1.299 kr",
+        description: "For 1 person i 3 dager",
+        features: [
+            "Vannrensetabletter (400L)",
+            "9.000 kcal tørrmat",
+            "Komplett førstehjelpssett",
+            "3 nødlys + lommelykt"
+        ],
+        image: "bilder/standard.jpg"
+    },
+    // Legg til familie- og premiumkasser her
+];
 
-    document.querySelectorAll('.fullscreen-section').forEach(section => {
-        observer.observe(section);
+// Bygg produktoversikt
+function renderProducts() {
+    const container = document.querySelector('.product-grid');
+    
+    products.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <ul class="product-features">
+                ${product.features.map(f => `<li>${f}</li>`).join('')}
+            </ul>
+            <div class="price">${product.price}</div>
+            <button onclick="scrollToForm()">Bestill nå</button>
+        `;
+        container.appendChild(card);
     });
+}
 
-    // Parallax-effekt for desktop
-    const updateParallax = () => {
-        if (window.innerWidth > 768) {
-            document.querySelectorAll('.product-section, .quality-section').forEach(section => {
-                section.style.backgroundAttachment = 'fixed';
-            });
-        } else {
-            document.querySelectorAll('.product-section, .quality-section').forEach(section => {
-                section.style.backgroundAttachment = 'scroll';
-            });
-        }
-    };
+// Bygg skjema
+function renderForm() {
+    const form = document.getElementById('bestillingsform');
+    form.innerHTML = `
+        <input type="hidden" name="_next" value="takk.html">
+        <input type="hidden" name="_subject" value="Ny bestilling">
+        
+        <div class="form-group">
+            <label for="name">Fullt navn:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <!-- Legg til resten av feltene -->
+        
+        <button type="submit">Fullfør bestilling</button>
+    `;
+}
 
-    window.addEventListener('resize', updateParallax);
-    updateParallax();
+// Initialiser
+document.addEventListener('DOMContentLoaded', () => {
+    renderProducts();
+    renderForm();
 });
