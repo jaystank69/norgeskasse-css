@@ -3,281 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Norgeskasse - Beredskap etter DSB</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Bestill Norgeskasse</title>
     <style>
-        :root {
-            --black: #000000;
-            --white: #ffffff;
-            --primary: #0066cc;
-            --accent: #e31937;
-        }
-
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--black);
-            color: var(--white);
-            margin: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
             line-height: 1.6;
-        }
-
-        /* Hero-seksjon (beholdt perfekt som før) */
-        .hero {
-            height: 100vh;
-            background-image: url('bilder/hero.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero p {
-            font-size: clamp(1rem, 3vw, 1.5rem);
+            padding: 20px;
             max-width: 800px;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Produktseksjoner (kølsvart bakgrunn) */
-        .product-section {
-            padding: 5rem 2rem;
-            max-width: 1000px;
             margin: 0 auto;
         }
-
-        .product-section h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
-
-        .product-features {
-            margin: 2rem 0;
-        }
-
-        .product-features li {
-            margin-bottom: 1rem;
-            position: relative;
-            padding-left: 1.8rem;
-        }
-
-        .product-features li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-size: 1.5rem;
-        }
-
-        .price {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        /* Om oss */
-        .about {
-            padding: 5rem 2rem;
-            background: #111;
-            text-align: center;
-        }
-
-        /* Bestillingsskjema */
-        .order-form {
-            padding: 5rem 2rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 20px;
         }
-
         label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 5px;
+            font-weight: 500;
         }
-
-        input, select {
+        input, select, textarea {
             width: 100%;
-            padding: 0.8rem;
+            padding: 10px;
             background: #111;
             border: 1px solid #333;
-            color: var(--white);
-            font-family: 'Inter';
+            color: white;
+            font-size: 16px;
         }
-
         button {
-            background: var(--accent);
+            background: #e31937;
             color: white;
             border: none;
-            padding: 1rem 2rem;
-            font-size: 1rem;
+            padding: 15px;
+            font-size: 18px;
             cursor: pointer;
             width: 100%;
-            margin-top: 1rem;
-        }
-
-        /* Scroll-prompt */
-        .scroll-prompt {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-20px) translateX(-50%); }
-            60% { transform: translateY(-10px) translateX(-50%); }
-        }
-
-        /* Mobiltilpasning */
-        @media (max-width: 768px) {
-            .product-section, .about, .order-form {
-                padding: 3rem 1rem;
-            }
+            margin-top: 20px;
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Hero-seksjon (uført som før) -->
-    <section class="hero">
-        <h1>Er du i beredskap?</h1>
-        <p>Norgeskasse – Ferdigpakket trygghet etter DSBs retningslinjer</p>
-        <div class="scroll-prompt">↓</div>
-    </section>
-
-    <!-- Standardkasse -->
-    <section class="product-section">
-        <h2>Standardkasse</h2>
-        <p>Perfekt for en person i 3 dager. Dekker DSBs minimumskrav:</p>
+    <h1>Bestill Norgeskasse</h1>
+    
+    <form action="https://formspree.io/f/mvgkbawp" method="POST">
+        <!-- Skjulte felter -->
+        <input type="hidden" name="_next" value="https://dindomain.no/takk.html">
+        <input type="hidden" name="_cc" id="customer-email-copy">
+        <input type="hidden" name="_subject" value="Ny Norgeskasse-bestilling">
+        <input type="hidden" name="_replyto" id="reply-to-email">
+        <input type="hidden" name="_template" value="table">
         
-        <ul class="product-features">
-            <li><strong>Vann:</strong> Rensetabletter (klar for 400 liter) + 6 flasker</li>
-            <li><strong>Mat:</strong> 9.000 kcal tørrmat (5 års holdbarhet)</li>
-            <li><strong>Førstehjelp:</strong> Komplett sett med manual</li>
-            <li><strong>Belysning:</strong> 3 nødlys + hodebåndlampe</li>
-            <li><strong>Verktøy:</strong> Flermannsverktøy + presenning</li>
-        </ul>
-
-        <p class="price">1.299 kr</p>
-    </section>
-
-    <!-- Familiefarge -->
-    <section class="product-section">
-        <h2>Familiekasse</h2>
-        <p>For 2 voksne og 2 barn i 5 dager. Inkluderer:</p>
+        <!-- Synlige felter -->
+        <div class="form-group">
+            <label for="name">Fullt navn:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
         
-        <ul class="product-features">
-            <li><strong>Alt i Standardkassen +</strong></li>
-            <li><strong>Barnemat:</strong> Spesialtilpasset (gluten/laktosefri)</li>
-            <li><strong>Hygiene:</strong> Våtservietter + sanitærartikler</li>
-            <li><strong>Komfort:</strong> Varmeposer + ekstra tepper</li>
-            <li><strong>Sikkerhet:</strong> Barnesikringsutstyr</li>
-        </ul>
-
-        <p class="price">2.499 kr</p>
-    </section>
-
-    <!-- Premium -->
-    <section class="product-section">
-        <h2>Premiumkasse</h2>
-        <p>Komplett løsning for 4 personer i 2+ uker:</p>
+        <div class="form-group">
+            <label for="email">E-post:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
         
-        <ul class="product-features">
-            <li><strong>Alt i Familiekassen +</strong></li>
-            <li><strong>Energi:</strong> Solcadelader + 20.000mAh batteri</li>
-            <li><strong>Kommunikasjon:</strong> Nødradio med VHF</li>
-            <li><strong>Medisinsk:</strong> Traumekit med blodstoppere</li>
-            <li><strong>Vann:</strong> Avansert filter for 10.000 liter</li>
-        </ul>
-
-        <p class="price">4.999 kr</p>
-    </section>
-
-    <!-- Om oss -->
-    <section class="about">
-        <h2>Vår historie</h2>
-        <p>Vi er et team av logistikere, helsearbeidere og ingeniører fra Trondheim som ble frustrert over hvor vanskelig det var å følge DSBs anbefalinger på en praktisk måte.</p>
-        <p>Etter 3 års utvikling og testing i norske forhold, lanserte vi Norgeskasse - den enkleste måten å være forberedt på.</p>
-    </section>
-
-    <!-- Bestillingsskjema -->
-    <section class="order-form">
-        <h2>Bestill nå</h2>
-        <p>Fri frakt over hele Norge</p>
+        <div class="form-group">
+            <label for="product">Velg produkt:</label>
+            <select id="product" name="product" required>
+                <option value="">Velg...</option>
+                <option value="Standardkasse - 1.299 kr">Standardkasse</option>
+                <option value="Familiekasse - 2.499 kr">Familiekasse</option>
+                <option value="Premiumkasse - 4.999 kr">Premiumkasse</option>
+            </select>
+        </div>
         
-        <form>
-            <div class="form-group">
-                <label for="product">Velg produkt:</label>
-                <select id="product" required>
-                    <option value="">Velg...</option>
-                    <option value="standard">Standardkasse (1.299 kr)</option>
-                    <option value="familie">Familiekasse (2.499 kr)</option>
-                    <option value="premium">Premiumkasse (4.999 kr)</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="name">Fullt navn:</label>
-                <input type="text" id="name" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">E-post:</label>
-                <input type="email" id="email" required>
-            </div>
-            
-            <button type="submit">Bestill trygghet</button>
-        </form>
-    </section>
+        <button type="submit">Send bestilling</button>
+    </form>
 
     <script>
-        // Enkel scroll-animasjon
-        document.querySelectorAll('.product-section, .about, .order-form').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(20px)';
-            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        });
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.product-section, .about, .order-form').forEach(section => {
-            observer.observe(section);
+        document.querySelector('form').addEventListener('submit', function(e) {
+            // Sett e-postkopi
+            const customerEmail = document.getElementById('email').value;
+            document.getElementById('customer-email-copy').value = customerEmail;
+            document.getElementById('reply-to-email').value = customerEmail;
+            
+            // Vis melding under sending
+            alert('Sender bestillingen...');
         });
     </script>
 </body>
