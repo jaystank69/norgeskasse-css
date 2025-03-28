@@ -3,74 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Norgeskasse - Beredskap etter DSBs anbefalinger</title>
+    <title>Norgeskasse - Beredskap etter DSBs retningslinjer</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="bilder/vart-mal.jpg" type="image/jpeg">
 </head>
 <body>
     <div class="scroll-container">
         <!-- Hero-seksjon -->
-        <section class="fullscreen-section hero-section">
+        <section class="fullscreen-section hero-section" style="background-image: url('bilder/hero.jpg')">
+            <div class="dark-overlay"></div>
             <h1>Er du i beredskap?</h1>
             <p class="subtitle">Norgeskasse – Ferdigpakket trygghet etter DSBs retningslinjer</p>
+            <div class="dsb-badge">
+                <img src="https://www.dsb.no/wp-content/themes/dsb/assets/images/dsb_logo.svg" alt="DSB logo" width="80">
+                <span>Anbefalt preparering</span>
+            </div>
             <div class="scroll-prompt"></div>
         </section>
 
         <!-- Standardkasse -->
-        <section class="fullscreen-section product-section" style="background-image: url('standard-bilde.jpg')">
+        <section class="fullscreen-section product-section" style="background-image: url('bilder/standard.jpg')">
             <div class="product-overlay">
                 <h2>Standard</h2>
                 <p>Alt du trenger for 3 dager etter DSBs minimumskrav</p>
                 <ul class="product-features">
-                    <li>✔ Vannrensetabletter</li>
-                    <li>✔ Nødlys</li>
-                    <li>✔ Førstehjelpssett</li>
-                    <li>✔ 9.000 kcal tørrmat</li>
+                    <li>✔ Vannrensetabletter (klar for 400L)</li>
+                    <li>✔ Nødlys og batteridrevne lamper</li>
+                    <li>✔ Komplett førstehjelpssett</li>
+                    <li>✔ 9.000 kcal tørrmat (5-års holdbarhet)</li>
                 </ul>
                 <p class="price">1.299 kr</p>
+                <p class="delivery-info">Inkluderer gratis frakt</p>
             </div>
         </section>
 
         <!-- Familie -->
-        <section class="fullscreen-section product-section" style="background-image: url('familie-bilde.jpg')">
+        <section class="fullscreen-section product-section" style="background-image: url('bilder/familie.jpg')">
             <div class="product-overlay">
                 <h2>Familie</h2>
                 <p>For husholdninger med barn, inkluderer ekstra hygieneartikler</p>
                 <ul class="product-features">
                     <li>✔ Alt i Standard +</li>
-                    <li>✔ Ekstra vannfilter</li>
-                    <li>✔ Spesialmat for barn</li>
-                    <li>✔ Hygienepakke</li>
+                    <li>✔ Ekstra vannfilter for barn</li>
+                    <li>✔ Spesialmat for barn (gluten/laktosefri)</li>
+                    <li>✔ Hygienepakke med 50 stk. våtservietter</li>
                 </ul>
                 <p class="price">2.499 kr</p>
+                <p class="delivery-info">Inkluderer gratis frakt</p>
             </div>
         </section>
 
         <!-- Premium -->
-        <section class="fullscreen-section product-section" style="background-image: url('premium-bilde.jpg')">
+        <section class="fullscreen-section product-section" style="background-image: url('bilder/premium.jpg')">
             <div class="product-overlay">
                 <h2>Premium</h2>
                 <p>Komplett løsning for 2+ uker med selvberging</p>
                 <ul class="product-features">
                     <li>✔ Alt i Familie +</li>
-                    <li>✔ Solcadeladere</li>
-                    <li>✔ Avansert medisinsk utstyr</li>
-                    <li>✔ Kommunikasjonsutstyr</li>
+                    <li>✔ Solcadeladere med 20.000mAh kapasitet</li>
+                    <li>✔ Traumekit med tourniquet og bandasjer</li>
+                    <li>✔ Nødradio med FM/VHF og solcelleladning</li>
                 </ul>
                 <p class="price">4.999 kr</p>
+                <p class="delivery-info">Inkluderer gratis frakt og opplæringsvideo</p>
+            </div>
+        </section>
+
+        <!-- Kvalitet -->
+        <section class="fullscreen-section quality-section" style="background-image: url('bilder/var-kvalitet.jpg')">
+            <div class="text-overlay">
+                <h2>Vår kvalitet</h2>
+                <p>Alle produkter testet under ekstreme norske forhold</p>
+                <div class="quality-badges">
+                    <div class="badge">✔ 5 års garanti</div>
+                    <div class="badge">✔ Norsk design</div>
+                    <div class="badge">✔ ISO 9001-sertifisert</div>
+                </div>
             </div>
         </section>
 
         <!-- Om oss -->
-        <section class="fullscreen-section about-section">
-            <h2>Hvem står bak?</h2>
-            <p>Vi er logistikkarbeidere, helsepersonell og ingeniører som vil gjøre det enkelt å følge myndighetenes råd.</p>
-            <div class="team-icons">
-                <div class="icon">🚚</div>
-                <div class="icon">🏥</div>
-                <div class="icon">⚙️</div>
+        <section class="fullscreen-section about-section" style="background-image: url('bilder/var-historie.jpg')">
+            <div class="dark-overlay"></div>
+            <div class="about-content">
+                <h2>Vår historie</h2>
+                <p>Vi er logistikkarbeidere, helsepersonell og ingeniører som vil gjøre det enkelt å følge myndighetenes råd.</p>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="icon">🚚</div>
+                        <h3>Logistikk</h3>
+                        <p>10 års erfaring med kriselagring</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="icon">🏥</div>
+                        <h3>Helse</h3>
+                        <p>Legegodkjente førstehjelpssett</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="icon">⚙️</div>
+                        <h3>Ingeniør</h3>
+                        <p>Optimal plassutnyttelse</p>
+                    </div>
+                </div>
+                <p class="highlight">Fri frakt i hele Norge gjennom Helthjem</p>
             </div>
-            <p class="highlight">Fri frakt i hele Norge gjennom Helthjem</p>
         </section>
     </div>
 
