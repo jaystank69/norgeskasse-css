@@ -1,227 +1,44 @@
-/* ===== Oppgradert CSS med animasjoner og flotte effekter ===== */
-:root {
-    --primary-color: #006341;
-    --secondary-color: #003d2a;
-    --text-color: #333;
-    --light-gray: #f5f5f5;
-    --white: #ffffff;
-    --black: #000000;
-    --red: #e31937;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produktlansering</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="scroll-container">
+        <!-- Seksjon 1: Hovedspørsmål -->
+        <section class="fullscreen-section">
+            <h1>Er du i beredskap?</h1>
+        </section>
 
-/* ===== Animasjonsnøkler ===== */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+        <!-- Seksjon 2: Produktbildet -->
+        <section class="fullscreen-section image-section">
+            <div class="image-overlay">
+                <h2>Vårt løsning</h2>
+                <p>En revolusjonerende teknologi for krisesituasjoner</p>
+            </div>
+        </section>
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
-}
+        <!-- Seksjon 3: Pris -->
+        <section class="fullscreen-section">
+            <h2>Pris</h2>
+            <p class="price">4 999 kr</p>
+            <p class="note">Inkluderer 24/7 støtte</p>
+        </section>
 
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0); }
-}
+        <!-- Seksjon 4: Kundevurderinger -->
+        <section class="fullscreen-section">
+            <h2>Hva våre kunder sier</h2>
+            <blockquote>
+                "Reddet livet mitt under siste krise"
+                <cite>- Ola Nordmann</cite>
+            </blockquote>
+        </section>
+    </div>
 
-/* ===== Base-stiler med animasjoner ===== */
-body {
-    font-family: 'Open Sans', system-ui, sans-serif;
-    line-height: 1.7;
-    letter-spacing: 0.02em;
-    animation: fadeIn 0.8s ease-out;
-}
-
-/* ===== Header med hover-magi ===== */
-.header {
-    background-color: var(--white);
-    box-shadow: var(--shadow);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo img {
-    height: 50px;
-    transition: transform 0.3s ease;
-}
-
-.logo:hover img {
-    transform: rotate(-5deg) scale(1.1);
-}
-
-.main-nav a {
-    position: relative;
-    padding-bottom: 5px;
-}
-
-.main-nav a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--primary-color);
-    transition: width 0.3s ease;
-}
-
-.main-nav a:hover::after {
-    width: 100%;
-}
-
-/* ===== Hero-seksjon med gradient og bølger ===== */
-.hero {
-    background: linear-gradient(135deg, var(--primary-color), #004d33);
-    color: var(--white);
-    padding: 4rem 2rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" fill="%23ffffff"></path></svg>');
-    background-size: cover;
-    transform: rotate(180deg);
-}
-
-.hero h1 {
-    animation: float 3s ease-in-out infinite;
-}
-
-/* ===== Søkeboks med puls-effekt ===== */
-.search-container {
-    animation: fadeIn 1s 0.3s backwards;
-}
-
-.search-tab.active {
-    animation: pulse 2s infinite;
-}
-
-.search-button {
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    position: relative;
-    overflow: hidden;
-}
-
-.search-button::before {
-    content: '🔍';
-    position: absolute;
-    left: -30px;
-    transition: all 0.4s;
-}
-
-.search-button:hover {
-    padding-left: 2.5rem;
-    background-color: #c1121f;
-}
-
-.search-button:hover::before {
-    left: 15px;
-}
-
-/* ===== Nyhetskort med 3D-effekt ===== */
-.news-card {
-    transition: all 0.4s ease;
-    perspective: 1000px;
-}
-
-.news-card:hover {
-    transform: translateY(-5px) rotateX(5deg);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-}
-
-.news-image {
-    overflow: hidden;
-}
-
-.news-image img {
-    transition: transform 0.5s ease;
-}
-
-.news-card:hover .news-image img {
-    transform: scale(1.1);
-}
-
-/* ===== Kort-grid med kaskade-animasjon ===== */
-.card {
-    opacity: 0;
-    animation: fadeIn 0.6s forwards;
-    animation-delay: calc(var(--order) * 0.1s);
-    transform-origin: center bottom;
-}
-
-.card:hover {
-    z-index: 10;
-    transform: scale(1.05) translateY(-10px);
-}
-
-/* ===== Footer med bølgeeffekt ===== */
-.footer {
-    position: relative;
-}
-
-.footer::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" fill="%23003d2a"></path></svg>');
-    background-size: cover;
-}
-
-/* ===== Dark mode-tilpasning ===== */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --text-color: #f0f0f0;
-        --light-gray: #222;
-        --white: #121212;
-    }
-    
-    body {
-        background: #1a1a1a;
-    }
-    
-    .header {
-        background: #222;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    }
-    
-    .card {
-        background: #2d2d2d;
-    }
-}
-
-/* ===== Mobilmeny-animasjon ===== */
-.main-nav ul {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease;
-}
-
-.main-nav ul.active {
-    max-height: 500px;
-}
-
-/* ===== Responsivitet ===== */
-@media (max-width: 768px) {
-    .hero h1 {
-        animation: none;
-    }
-    
-    .news-card {
-        animation: fadeIn 0.6s ease-out;
-    }
-}
+    <script src="script.js"></script>
+</body>
+</html>
