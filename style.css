@@ -1,284 +1,103 @@
-/* Generelle stiler */
 :root {
-    --primary-color: #006341; /* DSBs grønne farge */
-    --secondary-color: #003d2a;
-    --text-color: #333;
-    --light-gray: #f5f5f5;
-    --white: #ffffff;
     --black: #000000;
-    --red: #e31937;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: 'Open Sans', Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: var(--text-color);
-    line-height: 1.6;
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
 }
 
-/* Header */
-.header {
-    background-color: var(--white);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 100;
+.scroll-container {
+    scroll-snap-type: y mandatory;
+    height: 100vh;
+    overflow-y: scroll;
 }
 
-.header-container {
+.fullscreen-section {
+    height: 100vh;
+    scroll-snap-align: start;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    padding: 1rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.logo img {
-    height: 50px;
-}
-
-.main-nav ul {
-    display: flex;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.main-nav li {
-    margin-left: 1.5rem;
-}
-
-.main-nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 600;
-    font-size: 1rem;
-    transition: color 0.3s;
-}
-
-.main-nav a:hover {
-    color: var(--primary-color);
-}
-
-/* Hero-banner */
-.hero {
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 3rem 2rem;
     text-align: center;
+    padding: 0 20px;
+    position: relative;
 }
 
-.hero h1 {
-    font-size: 2.5rem;
+h1, h2 {
+    font-weight: 700;
+    font-size: clamp(2rem, 8vw, 4rem);
     margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.search-container {
+p, blockquote {
+    font-weight: 300;
+    font-size: clamp(1rem, 4vw, 1.5rem);
     max-width: 800px;
-    margin: 2rem auto;
-    background: var(--white);
-    border-radius: 5px;
-    padding: 1.5rem;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
 }
 
-.search-tabs {
-    display: flex;
-    margin-bottom: 1rem;
+/* Animer tekst når seksjon er aktiv */
+.fullscreen-section.active h1,
+.fullscreen-section.active h2,
+.fullscreen-section.active p,
+.fullscreen-section.active blockquote {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-.search-tab {
-    padding: 0.75rem 1.5rem;
-    background: var(--light-gray);
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    margin-right: 0.5rem;
-    border-radius: 4px 4px 0 0;
+/* Bilde-seksjon med overlay */
+.image-section {
+    background: url('https://images.unsplash.com/photo-1581093450021-4a7360e9a7e0') center/cover no-repeat;
+    position: relative;
 }
 
-.search-tab.active {
-    background: var(--primary-color);
-    color: var(--white);
-}
-
-.search-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    gap: 1rem;
-}
-
-.search-input {
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.search-button {
-    background-color: var(--red);
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-/* Innholdsseksjoner */
-.section {
-    padding: 3rem 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    color: var(--primary-color);
-}
-
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.card {
-    background: var(--white);
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-}
-
-.card-content {
-    padding: 1.5rem;
-}
-
-.card h3 {
-    margin-top: 0;
-    color: var(--primary-color);
-}
-
-/* Nyhetsseksjon */
-.news-section {
-    background-color: var(--light-gray);
-}
-
-.news-card {
-    display: flex;
-    margin-bottom: 1.5rem;
-    background: var(--white);
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.news-image {
-    flex: 0 0 30%;
-}
-
-.news-image img {
+.image-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    background: rgba(0, 0, 0, 0.5);
 }
 
-.news-content {
-    flex: 1;
-    padding: 1.5rem;
+.image-overlay {
+    position: relative;
+    z-index: 2;
 }
 
-.news-date {
-    color: #666;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
+/* Pris-seksjon */
+.price {
+    font-size: clamp(2rem, 10vw, 5rem);
+    font-weight: 500;
+    margin: 1rem 0;
 }
 
-/* Footer */
-.footer {
-    background-color: var(--secondary-color);
-    color: var(--white);
-    padding: 3rem 2rem;
+/* Kundevurdering */
+blockquote {
+    font-style: italic;
+    margin-top: 2rem;
 }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-}
-
-.footer-column h3 {
-    margin-top: 0;
-    margin-bottom: 1.5rem;
-    font-size: 1.2rem;
-}
-
-.footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-column li {
-    margin-bottom: 0.75rem;
-}
-
-.footer-column a {
-    color: #ccc;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-column a:hover {
-    color: var(--white);
-}
-
-.copyright {
-    text-align: center;
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    color: #ccc;
-    font-size: 0.9rem;
-}
-
-/* Responsivt design */
-@media (max-width: 768px) {
-    .header-container {
-        flex-direction: column;
-        padding: 1rem;
-    }
-
-    .main-nav ul {
-        margin-top: 1rem;
-    }
-
-    .search-form {
-        grid-template-columns: 1fr;
-    }
-
-    .news-card {
-        flex-direction: column;
-    }
-
-    .news-image {
-        flex: 0 0 200px;
-    }
+cite {
+    display: block;
+    margin-top: 1rem;
+    font-style: normal;
+    font-weight: 500;
 }
