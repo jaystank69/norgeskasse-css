@@ -1,113 +1,284 @@
-/* Reset og basis */
-html {
-  box-sizing: border-box;
-  font-size: 16px;
+/* Generelle stiler */
+:root {
+    --primary-color: #006341; /* DSBs grønne farge */
+    --secondary-color: #003d2a;
+    --text-color: #333;
+    --light-gray: #f5f5f5;
+    --white: #ffffff;
+    --black: #000000;
+    --red: #e31937;
 }
-*, *::before, *::after {
-  box-sizing: inherit;
-}
+
 body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #ffffff;
-  color: #222;
-  line-height: 1.6;
+    font-family: 'Open Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
 /* Header */
-.dsb-header {
-  background-color: #004B87;
-  border-bottom: 4px solid #FFCD00;
-  padding: 1rem 0;
-}
-.dsb-header-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.dsb-logo {
-  max-height: 60px;
-}
-.dsb-primary-nav .dsb-nav-list {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  padding: 0;
-  margin: 0;
-}
-.dsb-nav-link {
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-  position: relative;
-}
-.dsb-nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background: #FFCD00;
-  transition: width 0.3s ease;
-}
-.dsb-nav-link:hover::after {
-  width: 100%;
+.header {
+    background-color: var(--white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 100;
 }
 
-/* Grid layout */
-.dsb-main-container {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 2rem;
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 2rem;
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Innhold */
-.dsb-title {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #004B87;
-  margin-bottom: 1rem;
-}
-.dsb-subtitle {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-top: 2rem;
-  color: #004B87;
-}
-.dsb-button {
-  display: inline-block;
-  background: #004B87;
-  color: white;
-  padding: 0.7rem 1.5rem;
-  border-radius: 4px;
-  text-decoration: none;
-  margin-top: 1rem;
-}
-.dsb-image {
-  max-width: 100%;
-  border-radius: 6px;
-  margin: 1.5rem 0;
+.logo img {
+    height: 50px;
 }
 
-/* Sidebar */
-.dsb-sidebar {
-  padding-left: 1.5rem;
-  border-left: 1px solid #ccc;
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav li {
+    margin-left: 1.5rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero-banner */
+.hero {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.search-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: var(--white);
+    border-radius: 5px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.search-tabs {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.search-tab {
+    padding: 0.75rem 1.5rem;
+    background: var(--light-gray);
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    border-radius: 4px 4px 0 0;
+}
+
+.search-tab.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.search-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 1rem;
+}
+
+.search-input {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.search-button {
+    background-color: var(--red);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* Innholdsseksjoner */
+.section {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--primary-color);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--white);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+/* Nyhetsseksjon */
+.news-section {
+    background-color: var(--light-gray);
+}
+
+.news-card {
+    display: flex;
+    margin-bottom: 1.5rem;
+    background: var(--white);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.news-image {
+    flex: 0 0 30%;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-content {
+    flex: 1;
+    padding: 1.5rem;
+}
+
+.news-date {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
 }
 
 /* Footer */
-.dsb-footer {
-  background: #f8f8f8;
-  padding: 2rem;
-  border-top: 1px solid #ccc;
-  text-align: center;
-  margin-top: 3rem;
+.footer {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 3rem 2rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.footer-column h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-column a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-column a:hover {
+    color: var(--white);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Responsivt design */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .main-nav ul {
+        margin-top: 1rem;
+    }
+
+    .search-form {
+        grid-template-columns: 1fr;
+    }
+
+    .news-card {
+        flex-direction: column;
+    }
+
+    .news-image {
+        flex: 0 0 200px;
+    }
 }
