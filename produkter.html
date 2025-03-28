@@ -1,49 +1,447 @@
 <!DOCTYPE html>
-<html lang="no">
-
+<html lang="no" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <title>Produkter - Norgeskassen</title>
-    <link rel="stylesheet" href="https://jaystank69.github.io/norgeskasse-css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produkter - Norgeskassen | Komplett beredskapsløsninger</title>
+  <link rel="stylesheet" href="https://jaystank69.github.io/norgeskasse-css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #005F73;
+      --secondary: #0A9396;
+      --accent: #EE9B00;
+      --dark: #001219;
+      --light: #E9D8A6;
+      --danger: #BB3E03;
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      padding: 2rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    h1, h2, h3 {
+      font-family: 'Montserrat', sans-serif;
+    }
+    
+    nav {
+      background-color: var(--dark);
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+      position: relative;
+    }
+    
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    .cta-button {
+      background-color: var(--accent);
+      color: var(--dark);
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(238, 155, 0, 0.4);
+    }
+    
+    main {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .page-header h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .page-header h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+    }
+    
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .product-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .product-image {
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .product-body {
+      padding: 1.5rem;
+    }
+    
+    .product-title {
+      font-size: 1.5rem;
+      margin-top: 0;
+      color: var(--primary);
+    }
+    
+    .product-price {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 1rem 0;
+    }
+    
+    .product-features {
+      list-style: none;
+      padding: 0;
+      margin: 1.5rem 0;
+    }
+    
+    .product-features li {
+      margin-bottom: 0.8rem;
+      padding-left: 1.8rem;
+      position: relative;
+    }
+    
+    .product-features li::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: var(--dark);
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      text-align: center;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+    
+    .product-details {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+    }
+    
+    footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 3rem 0;
+      margin-top: 4rem;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      padding: 0 1rem;
+    }
+    
+    .copyright {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+      }
+      
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <header>
-        <nav>
-            <a href="index.html">Hjem</a>
-            <a href="produkter.html">Produkter</a>
-            <a href="om-oss.html">Om oss</a>
-            <a href="kontakt.html">Kontakt</a>
-        </nav>
-    </header>
 
-    <main>
-        <h1>Våre produkter</h1>
+  <!-- HEADER -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <a href="index.html" style="font-weight: 700; color: var(--accent); text-decoration: none; font-size: 1.2rem;">NORGESKASSEN</a>
+      </div>
+      <div class="nav-links">
+        <a href="index.html"><i class="fas fa-home"></i> Hjem</a>
+        <a href="produkter.html" class="active"><i class="fas fa-box-open"></i> Produkter</a>
+        <a href="om-oss.html"><i class="fas fa-info-circle"></i> Om oss</a>
+        <a href="kontakt.html"><i class="fas fa-envelope"></i> Kontakt</a>
+        <a href="#bestill" class="cta-button"><i class="fas fa-shopping-cart"></i> Bestill nå</a>
+      </div>
+    </div>
+  </header>
 
-        <section class="produkt">
-            <h2>Norgeskassen Standard</h2>
-            <p>Inneholder grunnleggende forsyninger som mat, vann, og førstehjelpsutstyr.</p>
-            <p><strong>Pris:</strong> 999 kr</p>
-        </section>
+  <!-- MAIN INNHOLD -->
+  <main>
+    <div class="page-header">
+      <h1>Våre produkter</h1>
+      <p>Velg den beredskapskassen som passer dine behov</p>
+    </div>
+    
+    <div class="product-grid">
+      <!-- PRODUKT 1 -->
+      <article class="product-card">
+        <img src="https://images.unsplash.com/photo-1581578017566-0625fa0e48bf?ixlib=rb-4.0.3&auto=format&fit=crop" alt="Norgeskassen Standard" class="product-image">
+        <div class="product-body">
+          <h2 class="product-title">Standard</h2>
+          <p>Grunnleggende forsyninger for enkeltpersoner og små familier.</p>
+          
+          <div class="product-price">999 kr</div>
+          
+          <ul class="product-features">
+            <li>For 1-2 personer</li>
+            <li>3 dagers forsyninger</li>
+            <li>Grunnleggende førstehjelp</li>
+            <li>Vannrensetabletter</li>
+            <li>Nødlys og batterier</li>
+          </ul>
+          
+          <a href="#bestill-standard" class="btn btn-block"><i class="fas fa-shopping-cart"></i> Bestill Standard</a>
+          
+          <div class="product-details">
+            <h3>Inkluderer:</h3>
+            <p>Mat, vann, førstehjelpsutstyr, nødlys, batterier, vannrensetabletter, presenning, verktøy og mer.</p>
+          </div>
+        </div>
+      </article>
+      
+      <!-- PRODUKT 2 -->
+      <article class="product-card">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop" alt="Norgeskassen Familie" class="product-image">
+        <div class="product-body">
+          <h2 class="product-title">Familie</h2>
+          <p>Utvidet kasse for familier med ekstra forsyninger.</p>
+          
+          <div class="product-price">1.999 kr</div>
+          
+          <ul class="product-features">
+            <li>For opptil 4 personer</li>
+            <li>5 dagers forsyninger</li>
+            <li>Komplett førstehjelp</li>
+            <li>Varmeteknikk</li>
+            <li>Ekstra verktøy</li>
+          </ul>
+          
+          <a href="#bestill-familie" class="btn btn-block"><i class="fas fa-shopping-cart"></i> Bestill Familie</a>
+          
+          <div class="product-details">
+            <h3>Inkluderer alt i Standard pluss:</h3>
+            <p>Ekstra mat og vann, varmeteknikk, soveposer, teltpresenning, mer omfattende verktøy og kommunikasjonsutstyr.</p>
+          </div>
+        </div>
+      </article>
+      
+      <!-- PRODUKT 3 -->
+      <article class="product-card">
+        <img src="https://images.unsplash.com/photo-1581578017566-0625fa0e48bf?ixlib=rb-4.0.3&auto=format&fit=crop" alt="Norgeskassen Premium" class="product-image">
+        <div class="product-body">
+          <h2 class="product-title">Premium</h2>
+          <p>Komplett pakke for krevende situasjoner og lengre varighet.</p>
+          
+          <div class="product-price">2.999 kr</div>
+          
+          <ul class="product-features">
+            <li>For opptil 6 personer</li>
+            <li>7+ dagers forsyninger</li>
+            <li>Avansert førstehjelp</li>
+            <li>Solcelle-lader</li>
+            <li>Kriseradio</li>
+          </ul>
+          
+          <a href="#bestill-premium" class="btn btn-block"><i class="fas fa-shopping-cart"></i> Bestill Premium</a>
+          
+          <div class="product-details">
+            <h3>Inkluderer alt i Familie pluss:</h3>
+            <p>Avansert medisinsk utstyr, solcelle-lader, kriseradio, værbestandig telt, langtidsholdbar mat og mer.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+    
+    <!-- KOMPARASJON -->
+    <section style="margin-top: 4rem; background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+      <h2 style="text-align: center; color: var(--primary);">Produktsammenligning</h2>
+      <table style="width: 100%; border-collapse: collapse; margin-top: 1.5rem;">
+        <thead>
+          <tr style="background-color: var(--primary); color: white;">
+            <th style="padding: 1rem; text-align: left;">Funksjon</th>
+            <th style="padding: 1rem; text-align: center;">Standard</th>
+            <th style="padding: 1rem; text-align: center;">Familie</th>
+            <th style="padding: 1rem; text-align: center;">Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 1rem;">Antall personer</td>
+            <td style="text-align: center; padding: 1rem;">1-2</td>
+            <td style="text-align: center; padding: 1rem;">4</td>
+            <td style="text-align: center; padding: 1rem;">6</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 1rem;">Varighet</td>
+            <td style="text-align: center; padding: 1rem;">3 dager</td>
+            <td style="text-align: center; padding: 1rem;">5 dager</td>
+            <td style="text-align: center; padding: 1rem;">7+ dager</td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 1rem;">Førstehjelp</td>
+            <td style="text-align: center; padding: 1rem;"><i class="fas fa-check" style="color: var(--accent);"></i></td>
+            <td style="text-align: center; padding: 1rem;"><i class="fas fa-check" style="color: var(--accent);"></i></td>
+            <td style="text-align: center; padding: 1rem;"><i class="fas fa-check" style="color: var(--accent);"></i></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 1rem;">Varmeteknikk</td>
+            <td style="text-align: center; padding: 1rem;"><i class="fas fa-times" style="color: var(--danger);"></i></td>
+            <td style="text-align: center; padding: 1rem;"><i class="fas fa-check" style="color: var(--accent);"></i></td>
+            <td style="text-align: center; padding: 1rem;"><i class="fas fa-check" style="color: var(--accent);"></i></td>
+          </tr>
+          <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 1rem;">Solcelle-lader</td>
+            <td style="text-align: center; padding: 1rem;"><i class="fas fa-times" style="color: var(--danger);"></i></td>
+            <td style="text-align: center; padding: 1rem;"><i class="fas fa-times" style="color: var(--danger);"></i></td>
+            <td style="text-align: center; padding: 1rem;"><i class="fas fa-check" style="color: var(--accent);"></i></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
 
-        <section class="produkt">
-            <h2>Norgeskassen Familie</h2>
-            <p>Utvidet kasse for familier, med ekstra mat og utstyr for fire personer.</p>
-            <p><strong>Pris:</strong> 1999 kr</p>
-        </section>
-
-        <section class="produkt">
-            <h2>Norgeskassen Premium</h2>
-            <p>Komplett pakke med utstyr, mat, gassbrenner og varmeutstyr for krevende situasjoner.</p>
-            <p><strong>Pris:</strong> 2999 kr</p>
-        </section>
-
-    </main>
-
-    <footer>
-        <p>© 2025 Norgeskassen AS</p>
-    </footer>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h3>Norgeskassen</h3>
+        <p>Din pålitelige partner for beredskap og trygghet i hverdagen.</p>
+      </div>
+      <div>
+        <h3>Kontakt</h3>
+        <p><i class="fas fa-phone"></i> 12 34 56 78</p>
+        <p><i class="fas fa-envelope"></i> post@norgeskasse.no</p>
+      </div>
+      <div>
+        <h3>Rask lenker</h3>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="personvern.html" style="color: white; text-decoration: none;">Personvern</a></li>
+          <li><a href="vilkar.html" style="color: white; text-decoration: none;">Vilkår</a></li>
+          <li><a href="leveringsbetingelser.html" style="color: white; text-decoration: none;">Levering</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 Norgeskassen AS | Org.nr: 123 456 789 MVA</p>
+    </div>
+  </footer>
 
 </body>
-
 </html>
