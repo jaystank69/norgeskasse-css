@@ -1,26 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.fullscreen-section');
-    
-    // Observer for scroll-animasjoner
+    // Scroll-animasjoner
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
+                
+                // Spesialeffekt for priser
+                if (entry.target.querySelector('.price')) {
+                    entry.target.querySelector('.price').style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        entry.target.querySelector('.price').style.transform = 'scale(1)';
+                    }, 500);
+                }
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.3 });
 
-    sections.forEach(section => {
+    document.querySelectorAll('.fullscreen-section').forEach(section => {
         observer.observe(section);
     });
 
-    // Glatt scrolling mellom seksjoner (valgfritt)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+    // Parallax-effekt for bilder (skrus av på mobil)
+    if (window.innerWidth > 768) {
+        document.querySelectorAll('.product-section').forEach(section => {
+            section.style.backgroundAttachment = 'fixed';
         });
-    });
+    }
 });
