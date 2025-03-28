@@ -2,11 +2,93 @@
 <html lang="no">
 <head>
   <meta charset="UTF-8" />
-  <title>Testside</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Norgeskassen | Beredskap gjort enkelt</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #fff;
+      color: #222;
+      font-family: sans-serif;
+    }
+    .dsb-title {
+      color: red;
+      font-size: 2rem;
+    }
+  </style>
 </head>
 <body>
-  <h1>Test av CSS</h1>
-  <p>Denne siden skal ha lilla bakgrunn og hvit tekst hvis CSS fungerer.</p>
+  <!-- HEADER -->
+  <header class="dsb-header">
+    <div class="dsb-header-container">
+      <img src="https://jaystank69.github.io/norgeskasse-css/bilder/norgeskassen-logo.png" alt="Norgeskassen logo" class="dsb-logo">
+      <button class="dsb-mobile-menu-btn" aria-label="Meny"><i class="fas fa-bars"></i></button>
+      <nav class="dsb-primary-nav">
+        <ul class="dsb-nav-list">
+          <li class="dsb-nav-item"><a href="index.html" class="dsb-nav-link">Hjem</a></li>
+          <li class="dsb-nav-item"><a href="produkter.html" class="dsb-nav-link">Produkter</a></li>
+          <li class="dsb-nav-item"><a href="omoss.html" class="dsb-nav-link">Om oss</a></li>
+          <li class="dsb-nav-item"><a href="kontakt.html" class="dsb-nav-link">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HOVEDINNHOLD -->
+  <main class="dsb-main-container">
+    <section class="dsb-main-content">
+      <h1 class="dsb-title">Trygghet når strømmen går</h1>
+      <p>Norgeskassen inneholder alt du trenger for å møte uventede hendelser i hjemmet.</p>
+      <a href="produkter.html" class="dsb-button">Se våre produkter</a>
+
+      <h2 class="dsb-subtitle">Om oss</h2>
+      <img src="https://jaystank69.github.io/norgeskasse-css/bilder/var-historie.jpg" class="dsb-image" alt="Om oss">
+      <p>Norgeskassen ble etablert med ett formål: Å sørge for trygghet og beredskap i norske hjem. Vi leverer kvalitetssikrede produkter anbefalt av DSB.</p>
+
+      <h2 class="dsb-subtitle">Våre produkter</h2>
+      <ul>
+        <li><strong>Standard:</strong> For 1-2 personer, 3 dagers forbruk – kr 899</li>
+        <li><strong>Familie:</strong> For opptil 4 personer, 5 dagers forbruk – kr 1499</li>
+        <li><strong>Premium:</strong> For opptil 6 personer, 7+ dagers forbruk – kr 2299</li>
+      </ul>
+
+      <h2 class="dsb-subtitle">Kundeanmeldelse</h2>
+      <blockquote>
+        "Fantastisk produkt som gir trygghet i hverdagen. Da strømmen gikk i hele nabolaget i tre dager i fjor, var vi de eneste som hadde alt vi trengte. Anbefales!"
+      </blockquote>
+      <p><em>— Kari Nordmann, Oslo</em></p>
+
+      <h2 class="dsb-subtitle">Ressurser</h2>
+      <ul>
+        <li><a href="faq.html"><i class="fas fa-question-circle"></i> Ofte stilte spørsmål</a></li>
+        <li><a href="https://dsb.no"><i class="fas fa-shield-alt"></i> DSBs råd</a></li>
+        <li><a href="beredskapsplan.html"><i class="fas fa-clipboard-list"></i> Lag din egen plan</a></li>
+      </ul>
+    </section>
+
+    <aside class="dsb-sidebar">
+      <h2 class="dsb-subtitle">Kontakt oss</h2>
+      <p><i class="fas fa-phone"></i> 12 34 56 78</p>
+      <p><i class="fas fa-envelope"></i> post@norgeskasse.no</p>
+
+      <h2 class="dsb-subtitle">Kundeservice</h2>
+      <ul>
+        <li><a href="leveringsbetingelser.html"><i class="fas fa-truck"></i> Levering</a></li>
+        <li><a href="retur.html"><i class="fas fa-undo"></i> Retur og reklamasjon</a></li>
+        <li><a href="vilkar.html"><i class="fas fa-file-contract"></i> Vilkår</a></li>
+        <li><a href="personvern.html"><i class="fas fa-lock"></i> Personvern</a></li>
+        <li><a href="cookies.html"><i class="fas fa-cookie-bite"></i> Cookies</a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="dsb-footer">
+    <div class="dsb-main-container">
+      <p>© 2025 Norgeskassen AS | Org.nr: 123 456 789 MVA</p>
+      <p><i class="fas fa-envelope"></i> post@norgeskasse.no</p>
+    </div>
+  </footer>
 </body>
 </html>
