@@ -1,83 +1,187 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Norgeskassen | Beredskap gjort enkelt</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSB - Norges beste nyhetside</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="dsb-header">
-    <div class="dsb-header-container">
-      <img src="https://jaystank69.github.io/norgeskasse-css/bilder/norgeskassen-logo.png" alt="Norgeskassen logo" class="dsb-logo">
-      <button class="dsb-mobile-menu-btn" aria-label="Meny"><i class="fas fa-bars"></i></button>
-      <nav class="dsb-primary-nav">
-        <ul class="dsb-nav-list">
-          <li class="dsb-nav-item"><a href="index.html" class="dsb-nav-link">Hjem</a></li>
-          <li class="dsb-nav-item"><a href="produkter.html" class="dsb-nav-link">Produkter</a></li>
-          <li class="dsb-nav-item"><a href="omoss.html" class="dsb-nav-link">Om oss</a></li>
-          <li class="dsb-nav-item"><a href="kontakt.html" class="dsb-nav-link">Kontakt</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/150x50?text=DSB+Logo" alt="DSB Logo">
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Nyheter</a></li>
+                    <li><a href="#">Sport</a></li>
+                    <li><a href="#">Kultur</a></li>
+                    <li><a href="#">Debatt</a></li>
+                    <li><a href="#">TV</a></li>
+                    <li><a href="#">Abonnement</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-  <!-- HOVEDINNHOLD -->
-  <main class="dsb-main-container">
-    <section class="dsb-main-content">
-      <h1 class="dsb-title">Trygghet når strømmen går</h1>
-      <p>Norgeskassen inneholder alt du trenger for å møte uventede hendelser i hjemmet.</p>
-      <a href="produkter.html" class="dsb-button">Se våre produkter</a>
-
-      <h2 class="dsb-subtitle">Om oss</h2>
-      <img src="https://jaystank69.github.io/norgeskasse-css/bilder/var-historie.jpg" class="dsb-image" alt="Om oss">
-      <p>Norgeskassen ble etablert med ett formål: Å sørge for trygghet og beredskap i norske hjem. Vi leverer kvalitetssikrede produkter anbefalt av DSB.</p>
-
-      <h2 class="dsb-subtitle">Våre produkter</h2>
-      <ul>
-        <li><strong>Standard:</strong> For 1-2 personer, 3 dagers forbruk – kr 899</li>
-        <li><strong>Familie:</strong> For opptil 4 personer, 5 dagers forbruk – kr 1499</li>
-        <li><strong>Premium:</strong> For opptil 6 personer, 7+ dagers forbruk – kr 2299</li>
-      </ul>
-
-      <h2 class="dsb-subtitle">Kundeanmeldelse</h2>
-      <blockquote>
-        "Fantastisk produkt som gir trygghet i hverdagen. Da strømmen gikk i hele nabolaget i tre dager i fjor, var vi de eneste som hadde alt vi trengte. Anbefales!"
-      </blockquote>
-      <p><em>— Kari Nordmann, Oslo</em></p>
-
-      <h2 class="dsb-subtitle">Ressurser</h2>
-      <ul>
-        <li><a href="faq.html"><i class="fas fa-question-circle"></i> Ofte stilte spørsmål</a></li>
-        <li><a href="https://dsb.no"><i class="fas fa-shield-alt"></i> DSBs råd</a></li>
-        <li><a href="beredskapsplan.html"><i class="fas fa-clipboard-list"></i> Lag din egen plan</a></li>
-      </ul>
+    <!-- Hero Banner med søk -->
+    <section class="hero">
+        <h1>Få de siste nyhetene før alle andre</h1>
+        <div class="search-container">
+            <div class="search-tabs">
+                <button class="search-tab active">Søk i nyheter</button>
+                <button class="search-tab">Søk i arkivet</button>
+                <button class="search-tab">Avansert søk</button>
+            </div>
+            <form class="search-form">
+                <input type="text" class="search-input" placeholder="Hva leter du etter?">
+                <input type="text" class="search-input" placeholder="Dato (valgfritt)">
+                <button type="submit" class="search-button">Søk</button>
+            </form>
+        </div>
     </section>
 
-    <aside class="dsb-sidebar">
-      <h2 class="dsb-subtitle">Kontakt oss</h2>
-      <p><i class="fas fa-phone"></i> 12 34 56 78</p>
-      <p><i class="fas fa-envelope"></i> post@norgeskasse.no</p>
+    <!-- Nyhetsseksjon -->
+    <section class="section news-section">
+        <h2 class="section-title">Siste nytt</h2>
+        
+        <div class="news-card">
+            <div class="news-image">
+                <img src="https://via.placeholder.com/300x200?text=Nyhetsbilde" alt="Nyhet">
+            </div>
+            <div class="news-content">
+                <div class="news-date">15. mai 2023 • 14:30</div>
+                <h3>Regjeringen varsler nye skatteendringer</h3>
+                <p>Finansministeren kunngjorde i dag en rekke skatteendringer som vil påvirke de fleste husholdninger. Eksperter er delte i sine vurderinger.</p>
+                <a href="#">Les mer →</a>
+            </div>
+        </div>
+        
+        <div class="news-card">
+            <div class="news-image">
+                <img src="https://via.placeholder.com/300x200?text=Nyhetsbilde" alt="Nyhet">
+            </div>
+            <div class="news-content">
+                <div class="news-date">15. mai 2023 • 12:45</div>
+                <h3>Værvarsel: Ekstremvær på vei til Vestlandet</h3>
+                <p>Meteorologer varsler om kraftig regn og flomfare for flere områder de neste dagene. Lokale myndigheter setter i gang beredskap.</p>
+                <a href="#">Les mer →</a>
+            </div>
+        </div>
+    </section>
 
-      <h2 class="dsb-subtitle">Kundeservice</h2>
-      <ul>
-        <li><a href="leveringsbetingelser.html"><i class="fas fa-truck"></i> Levering</a></li>
-        <li><a href="retur.html"><i class="fas fa-undo"></i> Retur og reklamasjon</a></li>
-        <li><a href="vilkar.html"><i class="fas fa-file-contract"></i> Vilkår</a></li>
-        <li><a href="personvern.html"><i class="fas fa-lock"></i> Personvern</a></li>
-        <li><a href="cookies.html"><i class="fas fa-cookie-bite"></i> Cookies</a></li>
-      </ul>
-    </aside>
-  </main>
+    <!-- Kategoriseksjon -->
+    <section class="section">
+        <h2 class="section-title">Våre kategorier</h2>
+        <div class="card-grid">
+            <div class="card">
+                <img src="https://via.placeholder.com/300x180?text=Politikk" alt="Politikk">
+                <div class="card-content">
+                    <h3>Politikk</h3>
+                    <p>Følg med på det som skjer i norsk og internasjonal politikk.</p>
+                    <a href="#">Se alle saker →</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="https://via.placeholder.com/300x180?text=Økonomi" alt="Økonomi">
+                <div class="card-content">
+                    <h3>Økonomi</h3>
+                    <p>Nyheter om næringsliv, børs og personlig økonomi.</p>
+                    <a href="#">Se alle saker →</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="https://via.placeholder.com/300x180?text=Sport" alt="Sport">
+                <div class="card-content">
+                    <h3>Sport</h3>
+                    <p>De siste sportsnyhetene og resultater fra alle idretter.</p>
+                    <a href="#">Se alle saker →</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- FOOTER -->
-  <footer class="dsb-footer">
-    <div class="dsb-main-container">
-      <p>© 2025 Norgeskassen AS | Org.nr: 123 456 789 MVA</p>
-      <p><i class="fas fa-envelope"></i> post@norgeskasse.no</p>
+    <!-- Abonnement seksjon -->
+    <section class="section" style="background-color: var(--light-gray);">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2 class="section-title">Bli abonnent i dag</h2>
+            <p style="margin-bottom: 2rem;">Få tilgang til alle nyheter, eksklusive analyser og premiuminnhold.</p>
+            <button style="background-color: var(--red); color: white; border: none; padding: 1rem 2rem; border-radius: 4px; font-size: 1.2rem; cursor: pointer;">Meld deg på nå</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Om DSB</h3>
+                <ul>
+                    <li><a href="#">Om oss</a></li>
+                    <li><a href="#">Kontakt</a></li>
+                    <li><a href="#">Annonsering</a></li>
+                    <li><a href="#">Jobb i DSB</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Hjelp og informasjon</h3>
+                <ul>
+                    <li><a href="#">Vanlige spørsmål</a></li>
+                    <li><a href="#">Abonnement</a></li>
+                    <li><a href="#">Teknisk support</a></li>
+                    <li><a href="#">Personvern</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Følg oss</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Last ned appen</h3>
+                <ul>
+                    <li><a href="#"><i class="fab fa-apple"></i> App Store</a></li>
+                    <li><a href="#"><i class="fab fa-google-play"></i> Google Play</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>© 2023 DSB. Alle rettigheter reservert.</p>
+        </div>
+    </footer>
+
+    <!-- Mobilmeny toggle (skjules på desktop) -->
+    <div class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
     </div>
-  </footer>
+
+    <script>
+        // Enkel JavaScript for mobilmeny
+        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
+            document.querySelector('.main-nav ul').classList.toggle('active');
+        });
+        
+        // Søkefanefunksjonalitet
+        const tabs = document.querySelectorAll('.search-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
