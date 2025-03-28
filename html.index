@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Norgeskassen</title>
+  <!-- HER STARTER STYLE.CSS -->
+<link rel="stylesheet" href="https://jaystank69.github.io/norgeskasse-css/style.css">
+</head>
+<body>
+  <!-- HER STARTER HEADER -->
+  <header>
+    <h1>Norgeskassen</h1>
+    <p>Alt du trenger når strømmen går</p>
+  </header>
+
+  <!-- HER STARTER NAVIGASJON -->
+  <nav>
+    <a href="#">Produkter</a>
+    <a href="#">Om oss</a>
+    <a href="#">Kontakt</a>
+  </nav>
+
+  <!-- HER STARTER HERO-SEKSJON -->
+  <div class="hero">
+    <h2>Beredskap gjort enkelt</h2>
+  </div>
+
+  <!-- HER STARTER OM OSS -->
+  <!-- HER STARTER PRODUKTSKJEMA -->
+  <!-- HER STARTER PRODUKTINFO -->
+  <!-- HER STARTER SCRIPT FOR PRODUKTSKJEMA -->
+  <!-- HER STARTER BILDEGALLERI -->
+  <!-- HER STARTER KUNDEANMELDELSER -->
+  <!-- HER STARTER LENKER TIL UNDERSIDER SOM FAQ, KONTAKT, OSV. -->
+  <!-- HER STARTER FOOTER -->
+</body>
+</html>
