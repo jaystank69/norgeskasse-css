@@ -1,83 +1,106 @@
-<!DOCTYPE html>
-<html lang="no">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Norgeskassen | Beredskap gjort enkelt</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- HEADER -->
-  <header class="dsb-header">
-    <div class="dsb-header-container">
-      <img src="https://jaystank69.github.io/norgeskasse-css/bilder/norgeskassen-logo.png" alt="Norgeskassen logo" class="dsb-logo">
-      <button class="dsb-mobile-menu-btn" aria-label="Meny"><i class="fas fa-bars"></i></button>
-      <nav class="dsb-primary-nav">
-        <ul class="dsb-nav-list">
-          <li class="dsb-nav-item"><a href="index.html" class="dsb-nav-link">Hjem</a></li>
-          <li class="dsb-nav-item"><a href="produkter.html" class="dsb-nav-link">Produkter</a></li>
-          <li class="dsb-nav-item"><a href="omoss.html" class="dsb-nav-link">Om oss</a></li>
-          <li class="dsb-nav-item"><a href="kontakt.html" class="dsb-nav-link">Kontakt</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+  font-family: 'Segoe UI', 'Open Sans', sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+}
 
-  <!-- HOVEDINNHOLD -->
-  <main class="dsb-main-container">
-    <section class="dsb-main-content">
-      <h1 class="dsb-title">Trygghet når strømmen går</h1>
-      <p>Norgeskassen inneholder alt du trenger for å møte uventede hendelser i hjemmet.</p>
-      <a href="produkter.html" class="dsb-button">Se våre produkter</a>
+/* Header */
+.dsb-header {
+  background-color: #004B87;
+  padding: 1rem 0;
+  border-bottom: 4px solid #FFCD00;
+}
+.dsb-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dsb-logo {
+  max-height: 60px;
+}
 
-      <h2 class="dsb-subtitle">Om oss</h2>
-      <img src="https://jaystank69.github.io/norgeskasse-css/bilder/var-historie.jpg" class="dsb-image" alt="Om oss">
-      <p>Norgeskassen ble etablert med ett formål: Å sørge for trygghet og beredskap i norske hjem. Vi leverer kvalitetssikrede produkter anbefalt av DSB.</p>
+/* Navigasjon */
+.dsb-primary-nav .dsb-nav-list {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.dsb-nav-item {
+  margin-left: 1.5rem;
+}
+.dsb-nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+}
+.dsb-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #FFCD00;
+  transition: width 0.3s ease;
+}
+.dsb-nav-link:hover::after {
+  width: 100%;
+}
 
-      <h2 class="dsb-subtitle">Våre produkter</h2>
-      <ul>
-        <li><strong>Standard:</strong> For 1-2 personer, 3 dagers forbruk – kr 899</li>
-        <li><strong>Familie:</strong> For opptil 4 personer, 5 dagers forbruk – kr 1499</li>
-        <li><strong>Premium:</strong> For opptil 6 personer, 7+ dagers forbruk – kr 2299</li>
-      </ul>
+/* Main layout */
+.dsb-main-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+}
+.dsb-title {
+  font-size: 2rem;
+  color: #004B87;
+  margin-bottom: 1rem;
+}
+.dsb-subtitle {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  color: #004B87;
+}
+.dsb-button {
+  background-color: #004B87;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  text-decoration: none;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 1rem;
+}
 
-      <h2 class="dsb-subtitle">Kundeanmeldelse</h2>
-      <blockquote>
-        "Fantastisk produkt som gir trygghet i hverdagen. Da strømmen gikk i hele nabolaget i tre dager i fjor, var vi de eneste som hadde alt vi trengte. Anbefales!"
-      </blockquote>
-      <p><em>— Kari Nordmann, Oslo</em></p>
+/* Sidebar */
+.dsb-sidebar {
+  border-left: 1px solid #ccc;
+  padding-left: 1.5rem;
+}
 
-      <h2 class="dsb-subtitle">Ressurser</h2>
-      <ul>
-        <li><a href="faq.html"><i class="fas fa-question-circle"></i> Ofte stilte spørsmål</a></li>
-        <li><a href="https://dsb.no"><i class="fas fa-shield-alt"></i> DSBs råd</a></li>
-        <li><a href="beredskapsplan.html"><i class="fas fa-clipboard-list"></i> Lag din egen plan</a></li>
-      </ul>
-    </section>
-
-    <aside class="dsb-sidebar">
-      <h2 class="dsb-subtitle">Kontakt oss</h2>
-      <p><i class="fas fa-phone"></i> 12 34 56 78</p>
-      <p><i class="fas fa-envelope"></i> post@norgeskasse.no</p>
-
-      <h2 class="dsb-subtitle">Kundeservice</h2>
-      <ul>
-        <li><a href="leveringsbetingelser.html"><i class="fas fa-truck"></i> Levering</a></li>
-        <li><a href="retur.html"><i class="fas fa-undo"></i> Retur og reklamasjon</a></li>
-        <li><a href="vilkar.html"><i class="fas fa-file-contract"></i> Vilkår</a></li>
-        <li><a href="personvern.html"><i class="fas fa-lock"></i> Personvern</a></li>
-        <li><a href="cookies.html"><i class="fas fa-cookie-bite"></i> Cookies</a></li>
-      </ul>
-    </aside>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="dsb-footer">
-    <div class="dsb-main-container">
-      <p>© 2025 Norgeskassen AS | Org.nr: 123 456 789 MVA</p>
-      <p><i class="fas fa-envelope"></i> post@norgeskasse.no</p>
-    </div>
-  </footer>
-</body>
-</html>
+/* Footer */
+.dsb-footer {
+  background-color: #f8f8f8;
+  padding: 2rem 0;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
