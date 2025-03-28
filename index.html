@@ -4,87 +4,245 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Norgeskasse - Beredskap etter DSBs retningslinjer</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="bilder/vart-mal.jpg" type="image/jpeg">
+    <style>
+        /* ===== CSS-START ===== */
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --primary: #0066cc;
+            --accent: #e31937;
+            --shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* Scroll-animasjoner */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Scroll-container */
+        .scroll-container {
+            scroll-snap-type: y mandatory;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+
+        /* Basis-seksjoner */
+        .fullscreen-section {
+            height: 100vh;
+            scroll-snap-align: start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .dark-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Hero-seksjon */
+        .hero-section {
+            background-image: url('bilder/hero.jpg');
+        }
+
+        .hero-section h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Produktseksjoner */
+        .product-overlay {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .product-features {
+            text-align: left;
+            margin: 2rem auto;
+            list-style-type: none;
+            max-width: 600px;
+        }
+
+        .product-features li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.8rem;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+        }
+
+        .product-features li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+        }
+
+        .price {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        /* Om oss-seksjon */
+        .about-section {
+            background-image: url('bilder/var-historie.jpg');
+        }
+
+        .about-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .team-member {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .team-member .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Mobiltilpasning */
+        @media (max-width: 768px) {
+            .product-features li {
+                padding-left: 1.5rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* ===== CSS-SLUTT ===== */
+    </style>
 </head>
 <body>
+    <!-- ===== HTML-START ===== -->
     <div class="scroll-container">
         <!-- Hero-seksjon -->
-        <section class="fullscreen-section hero-section" style="background-image: url('bilder/hero.jpg')">
+        <section class="fullscreen-section hero-section">
             <div class="dark-overlay"></div>
             <h1>Er du i beredskap?</h1>
             <p class="subtitle">Norgeskasse – Ferdigpakket trygghet etter DSBs retningslinjer</p>
-            <div class="dsb-badge">
-                <img src="https://www.dsb.no/wp-content/themes/dsb/assets/images/dsb_logo.svg" alt="DSB logo" width="80">
-                <span>Anbefalt preparering</span>
-            </div>
-            <div class="scroll-prompt"></div>
         </section>
 
         <!-- Standardkasse -->
-        <section class="fullscreen-section product-section" style="background-image: url('bilder/standard.jpg')">
+        <section class="fullscreen-section" style="background-image: url('bilder/standard.jpg')">
             <div class="product-overlay">
                 <h2>Standard</h2>
                 <p>Alt du trenger for 3 dager etter DSBs minimumskrav</p>
                 <ul class="product-features">
-                    <li>✔ Vannrensetabletter (klar for 400L)</li>
-                    <li>✔ Nødlys og batteridrevne lamper</li>
-                    <li>✔ Komplett førstehjelpssett</li>
-                    <li>✔ 9.000 kcal tørrmat (5-års holdbarhet)</li>
+                    <li>Vannrensetabletter (klar for 400L)</li>
+                    <li>Nødlys og batteridrevne lamper</li>
+                    <li>Komplett førstehjelpssett</li>
+                    <li>9.000 kcal tørrmat (5-års holdbarhet)</li>
                 </ul>
                 <p class="price">1.299 kr</p>
-                <p class="delivery-info">Inkluderer gratis frakt</p>
             </div>
         </section>
 
         <!-- Familie -->
-        <section class="fullscreen-section product-section" style="background-image: url('bilder/familie.jpg')">
+        <section class="fullscreen-section" style="background-image: url('bilder/familie.jpg')">
             <div class="product-overlay">
                 <h2>Familie</h2>
                 <p>For husholdninger med barn, inkluderer ekstra hygieneartikler</p>
                 <ul class="product-features">
-                    <li>✔ Alt i Standard +</li>
-                    <li>✔ Ekstra vannfilter for barn</li>
-                    <li>✔ Spesialmat for barn (gluten/laktosefri)</li>
-                    <li>✔ Hygienepakke med 50 stk. våtservietter</li>
+                    <li>Alt i Standard +</li>
+                    <li>Ekstra vannfilter for barn</li>
+                    <li>Spesialmat for barn (gluten/laktosefri)</li>
+                    <li>Hygienepakke med 50 stk. våtservietter</li>
                 </ul>
                 <p class="price">2.499 kr</p>
-                <p class="delivery-info">Inkluderer gratis frakt</p>
             </div>
         </section>
 
         <!-- Premium -->
-        <section class="fullscreen-section product-section" style="background-image: url('bilder/premium.jpg')">
+        <section class="fullscreen-section" style="background-image: url('bilder/premium.jpg')">
             <div class="product-overlay">
                 <h2>Premium</h2>
                 <p>Komplett løsning for 2+ uker med selvberging</p>
                 <ul class="product-features">
-                    <li>✔ Alt i Familie +</li>
-                    <li>✔ Solcadeladere med 20.000mAh kapasitet</li>
-                    <li>✔ Traumekit med tourniquet og bandasjer</li>
-                    <li>✔ Nødradio med FM/VHF og solcelleladning</li>
+                    <li>Alt i Familie +</li>
+                    <li>Solcadeladere med 20.000mAh kapasitet</li>
+                    <li>Traumekit med tourniquet og bandasjer</li>
+                    <li>Nødradio med FM/VHF og solcelleladning</li>
                 </ul>
                 <p class="price">4.999 kr</p>
-                <p class="delivery-info">Inkluderer gratis frakt og opplæringsvideo</p>
-            </div>
-        </section>
-
-        <!-- Kvalitet -->
-        <section class="fullscreen-section quality-section" style="background-image: url('bilder/var-kvalitet.jpg')">
-            <div class="text-overlay">
-                <h2>Vår kvalitet</h2>
-                <p>Alle produkter testet under ekstreme norske forhold</p>
-                <div class="quality-badges">
-                    <div class="badge">✔ 5 års garanti</div>
-                    <div class="badge">✔ Norsk design</div>
-                    <div class="badge">✔ ISO 9001-sertifisert</div>
-                </div>
             </div>
         </section>
 
         <!-- Om oss -->
-        <section class="fullscreen-section about-section" style="background-image: url('bilder/var-historie.jpg')">
+        <section class="fullscreen-section about-section">
             <div class="dark-overlay"></div>
             <div class="about-content">
                 <h2>Vår historie</h2>
@@ -106,11 +264,38 @@
                         <p>Optimal plassutnyttelse</p>
                     </div>
                 </div>
-                <p class="highlight">Fri frakt i hele Norge gjennom Helthjem</p>
+                <p style="margin-top: 2rem; font-weight: 500;">Fri frakt i hele Norge gjennom Helthjem</p>
             </div>
         </section>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // ===== JAVASCRIPT =====
+        document.addEventListener('DOMContentLoaded', () => {
+            // Animer elementer når de kommer i viewport
+            const animateOnScroll = () => {
+                document.querySelectorAll('.fullscreen-section').forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.75) {
+                        section.querySelectorAll('h1, h2, p, ul, .price').forEach(el => {
+                            el.style.opacity = '1';
+                            el.style.transform = 'translateY(0)';
+                        });
+                    }
+                });
+            };
+
+            // Sett opp initial animasjonsstil
+            document.querySelectorAll('.fullscreen-section:not(:first-child) h2, .fullscreen-section:not(:first-child) p, .fullscreen-section:not(:first-child) ul, .fullscreen-section:not(:first-child) .price').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            });
+
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Trigger ved lasting
+        });
+    </script>
+    <!-- ===== HTML-SLUTT ===== -->
 </body>
 </html>
