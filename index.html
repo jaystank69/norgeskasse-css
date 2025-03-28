@@ -1,187 +1,227 @@
-<!DOCTYPE html>
-<html lang="no">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DSB - Norges beste nyhetside</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <img src="https://via.placeholder.com/150x50?text=DSB+Logo" alt="DSB Logo">
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="#">Nyheter</a></li>
-                    <li><a href="#">Sport</a></li>
-                    <li><a href="#">Kultur</a></li>
-                    <li><a href="#">Debatt</a></li>
-                    <li><a href="#">TV</a></li>
-                    <li><a href="#">Abonnement</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+/* ===== Oppgradert CSS med animasjoner og flotte effekter ===== */
+:root {
+    --primary-color: #006341;
+    --secondary-color: #003d2a;
+    --text-color: #333;
+    --light-gray: #f5f5f5;
+    --white: #ffffff;
+    --black: #000000;
+    --red: #e31937;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-    <!-- Hero Banner med søk -->
-    <section class="hero">
-        <h1>Få de siste nyhetene før alle andre</h1>
-        <div class="search-container">
-            <div class="search-tabs">
-                <button class="search-tab active">Søk i nyheter</button>
-                <button class="search-tab">Søk i arkivet</button>
-                <button class="search-tab">Avansert søk</button>
-            </div>
-            <form class="search-form">
-                <input type="text" class="search-input" placeholder="Hva leter du etter?">
-                <input type="text" class="search-input" placeholder="Dato (valgfritt)">
-                <button type="submit" class="search-button">Søk</button>
-            </form>
-        </div>
-    </section>
+/* ===== Animasjonsnøkler ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-    <!-- Nyhetsseksjon -->
-    <section class="section news-section">
-        <h2 class="section-title">Siste nytt</h2>
-        
-        <div class="news-card">
-            <div class="news-image">
-                <img src="https://via.placeholder.com/300x200?text=Nyhetsbilde" alt="Nyhet">
-            </div>
-            <div class="news-content">
-                <div class="news-date">15. mai 2023 • 14:30</div>
-                <h3>Regjeringen varsler nye skatteendringer</h3>
-                <p>Finansministeren kunngjorde i dag en rekke skatteendringer som vil påvirke de fleste husholdninger. Eksperter er delte i sine vurderinger.</p>
-                <a href="#">Les mer →</a>
-            </div>
-        </div>
-        
-        <div class="news-card">
-            <div class="news-image">
-                <img src="https://via.placeholder.com/300x200?text=Nyhetsbilde" alt="Nyhet">
-            </div>
-            <div class="news-content">
-                <div class="news-date">15. mai 2023 • 12:45</div>
-                <h3>Værvarsel: Ekstremvær på vei til Vestlandet</h3>
-                <p>Meteorologer varsler om kraftig regn og flomfare for flere områder de neste dagene. Lokale myndigheter setter i gang beredskap.</p>
-                <a href="#">Les mer →</a>
-            </div>
-        </div>
-    </section>
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
 
-    <!-- Kategoriseksjon -->
-    <section class="section">
-        <h2 class="section-title">Våre kategorier</h2>
-        <div class="card-grid">
-            <div class="card">
-                <img src="https://via.placeholder.com/300x180?text=Politikk" alt="Politikk">
-                <div class="card-content">
-                    <h3>Politikk</h3>
-                    <p>Følg med på det som skjer i norsk og internasjonal politikk.</p>
-                    <a href="#">Se alle saker →</a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <img src="https://via.placeholder.com/300x180?text=Økonomi" alt="Økonomi">
-                <div class="card-content">
-                    <h3>Økonomi</h3>
-                    <p>Nyheter om næringsliv, børs og personlig økonomi.</p>
-                    <a href="#">Se alle saker →</a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <img src="https://via.placeholder.com/300x180?text=Sport" alt="Sport">
-                <div class="card-content">
-                    <h3>Sport</h3>
-                    <p>De siste sportsnyhetene og resultater fra alle idretter.</p>
-                    <a href="#">Se alle saker →</a>
-                </div>
-            </div>
-        </div>
-    </section>
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
 
-    <!-- Abonnement seksjon -->
-    <section class="section" style="background-color: var(--light-gray);">
-        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-            <h2 class="section-title">Bli abonnent i dag</h2>
-            <p style="margin-bottom: 2rem;">Få tilgang til alle nyheter, eksklusive analyser og premiuminnhold.</p>
-            <button style="background-color: var(--red); color: white; border: none; padding: 1rem 2rem; border-radius: 4px; font-size: 1.2rem; cursor: pointer;">Meld deg på nå</button>
-        </div>
-    </section>
+/* ===== Base-stiler med animasjoner ===== */
+body {
+    font-family: 'Open Sans', system-ui, sans-serif;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+    animation: fadeIn 0.8s ease-out;
+}
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>Om DSB</h3>
-                <ul>
-                    <li><a href="#">Om oss</a></li>
-                    <li><a href="#">Kontakt</a></li>
-                    <li><a href="#">Annonsering</a></li>
-                    <li><a href="#">Jobb i DSB</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Hjelp og informasjon</h3>
-                <ul>
-                    <li><a href="#">Vanlige spørsmål</a></li>
-                    <li><a href="#">Abonnement</a></li>
-                    <li><a href="#">Teknisk support</a></li>
-                    <li><a href="#">Personvern</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Følg oss</h3>
-                <ul>
-                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-                    <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    <li><a href="#"><i class="fab fa-youtube"></i> YouTube</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Last ned appen</h3>
-                <ul>
-                    <li><a href="#"><i class="fab fa-apple"></i> App Store</a></li>
-                    <li><a href="#"><i class="fab fa-google-play"></i> Google Play</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>© 2023 DSB. Alle rettigheter reservert.</p>
-        </div>
-    </footer>
+/* ===== Header med hover-magi ===== */
+.header {
+    background-color: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-    <!-- Mobilmeny toggle (skjules på desktop) -->
-    <div class="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
-    </div>
+.logo img {
+    height: 50px;
+    transition: transform 0.3s ease;
+}
 
-    <script>
-        // Enkel JavaScript for mobilmeny
-        document.querySelector('.mobile-menu-toggle').addEventListener('click', function() {
-            document.querySelector('.main-nav ul').classList.toggle('active');
-        });
-        
-        // Søkefanefunksjonalitet
-        const tabs = document.querySelectorAll('.search-tab');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-            });
-        });
-    </script>
-</body>
-</html>
+.logo:hover img {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.main-nav a {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* ===== Hero-seksjon med gradient og bølger ===== */
+.hero {
+    background: linear-gradient(135deg, var(--primary-color), #004d33);
+    color: var(--white);
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" fill="%23ffffff"></path></svg>');
+    background-size: cover;
+    transform: rotate(180deg);
+}
+
+.hero h1 {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ===== Søkeboks med puls-effekt ===== */
+.search-container {
+    animation: fadeIn 1s 0.3s backwards;
+}
+
+.search-tab.active {
+    animation: pulse 2s infinite;
+}
+
+.search-button {
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+.search-button::before {
+    content: '🔍';
+    position: absolute;
+    left: -30px;
+    transition: all 0.4s;
+}
+
+.search-button:hover {
+    padding-left: 2.5rem;
+    background-color: #c1121f;
+}
+
+.search-button:hover::before {
+    left: 15px;
+}
+
+/* ===== Nyhetskort med 3D-effekt ===== */
+.news-card {
+    transition: all 0.4s ease;
+    perspective: 1000px;
+}
+
+.news-card:hover {
+    transform: translateY(-5px) rotateX(5deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.news-image {
+    overflow: hidden;
+}
+
+.news-image img {
+    transition: transform 0.5s ease;
+}
+
+.news-card:hover .news-image img {
+    transform: scale(1.1);
+}
+
+/* ===== Kort-grid med kaskade-animasjon ===== */
+.card {
+    opacity: 0;
+    animation: fadeIn 0.6s forwards;
+    animation-delay: calc(var(--order) * 0.1s);
+    transform-origin: center bottom;
+}
+
+.card:hover {
+    z-index: 10;
+    transform: scale(1.05) translateY(-10px);
+}
+
+/* ===== Footer med bølgeeffekt ===== */
+.footer {
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V7.23C0,65.52,268.63,112.77,600,112.77S1200,65.52,1200,7.23V0Z" fill="%23003d2a"></path></svg>');
+    background-size: cover;
+}
+
+/* ===== Dark mode-tilpasning ===== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #f0f0f0;
+        --light-gray: #222;
+        --white: #121212;
+    }
+    
+    body {
+        background: #1a1a1a;
+    }
+    
+    .header {
+        background: #222;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    
+    .card {
+        background: #2d2d2d;
+    }
+}
+
+/* ===== Mobilmeny-animasjon ===== */
+.main-nav ul {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.main-nav ul.active {
+    max-height: 500px;
+}
+
+/* ===== Responsivitet ===== */
+@media (max-width: 768px) {
+    .hero h1 {
+        animation: none;
+    }
+    
+    .news-card {
+        animation: fadeIn 0.6s ease-out;
+    }
+}
